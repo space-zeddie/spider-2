@@ -12,17 +12,17 @@ import org.jsoup.select.Elements;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CssSelector extends BaseElementSelector {
+public class CssExtractor extends BasicElementExtractor {
 
     private String selectorText;
 
     private String attrName;
 
-    public CssSelector(String selectorText) {
+    public CssExtractor(String selectorText) {
         this.selectorText = selectorText;
     }
 
-    public CssSelector(String selectorText, String attrName) {
+    public CssExtractor(String selectorText, String attrName) {
         this.selectorText = selectorText;
         this.attrName = attrName;
     }

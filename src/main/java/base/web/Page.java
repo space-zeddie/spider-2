@@ -3,7 +3,7 @@ package base.web; /**
  */
 import base.ResultItems;
 import base.utils.UrlUtils;
-import base.web.selectors.Selectable;
+import base.web.selectors.Extractable;
 import org.apache.commons.lang3.StringUtils;
 import base.utils.HTTPConsts;
 
@@ -34,7 +34,7 @@ public class Page {
 
     private String rawText;
 
-    private Selectable url;
+    private Extractable url;
 
     private Map<String,List<String>> headers;
 
@@ -165,11 +165,11 @@ public class Page {
      *
      * @return url of current page
      */
-    public Selectable getUrl() {
+    public Extractable getUrl() {
         return url;
     }
 
-    public void setUrl(Selectable url) {
+    public void setUrl(Extractable url) {
         this.url = url;
     }
 

@@ -8,13 +8,13 @@ import com.jayway.jsonpath.JsonPath;
 import java.util.ArrayList;
 import java.util.List;
 
-public class JsonPathSelector implements Selector {
+public class JsonPathExtractor implements Extractor {
 
     private String jsonPathStr;
 
     private JsonPath jsonPath;
 
-    public JsonPathSelector(String jsonPathStr) {
+    public JsonPathExtractor(String jsonPathStr) {
         this.jsonPathStr = jsonPathStr;
         this.jsonPath = JsonPath.compile(this.jsonPathStr);
     }

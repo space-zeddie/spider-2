@@ -1,31 +1,29 @@
 package base.web.selectors;
 
 /**
- * Created by matvii on 10.04.17.
+ * Created by matvii on 11.04.17.
  */
+import org.jsoup.nodes.Element;
+
 import java.util.List;
 
-/**
- * Selector(extractor) for text.<br>
- *
- */
-public interface Selector {
+public interface ElementExtractor {
 
     /**
      * Extract single result in text.<br>
      * If there are more than one result, only the first will be chosen.
      *
-     * @param text text
+     * @param element element
      * @return result
      */
-    String select(String text);
+    String select(Element element);
 
     /**
      * Extract all results in text.<br>
      *
-     * @param text text
+     * @param element element
      * @return results
      */
-    List<String> selectList(String text);
+    List<String> selectList(Element element);
 
 }

@@ -11,9 +11,9 @@ import java.util.List;
 /**
  * Borrowed from https://code.google.com/p/cx-extractor/
  */
-public class SmartContentSelector implements Selector {
+public class SmartContentExtractor implements Extractor {
 
-    public SmartContentSelector() {
+    public SmartContentExtractor() {
     }
 
     @Override

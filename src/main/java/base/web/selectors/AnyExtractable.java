@@ -3,7 +3,6 @@ package base.web.selectors;
 /**
  * Created by matvii on 10.04.17.
  */
-import base.web.selectors.*;
 import org.apache.commons.collections.CollectionUtils;
 
 import java.util.ArrayList;
@@ -13,24 +12,24 @@ import java.util.List;
  * @author code4crafer@gmail.com
  * @since 0.5.2
  */
-public abstract class AbstractSelectable implements Selectable {
+public abstract class AnyExtractable implements Extractable {
 
     protected abstract List<String> getSourceTexts();
 
     @Override
-    public Selectable css(String selector) {
-        return $(selector);
+    public Extractable css(String extractor) {
+        return $(extractor);
     }
 
     @Override
-    public Selectable css(String selector, String attrName) {
-        return $(selector, attrName);
+    public Extractable css(String extractor, String attrName) {
+        return $(extractor, attrName);
     }
 
-    protected Selectable select(Selector selector, List<String> strings) {
+    protected Extractable select(Extractor extractor, List<String> strings) {
         List<String> results = new ArrayList<String>();
         for (String string : strings) {
-            String result = selector.select(string);
+            String result = extractor.select(string);
             if (result != null) {
                 results.add(result);
             }
@@ -38,10 +37,10 @@ public abstract class AbstractSelectable implements Selectable {
         return new PlainText(results);
     }
 
-    protected Selectable selectList(Selector selector, List<String> strings) {
+    protected Extractable selectList(Extractor extractor, List<String> strings) {
         List<String> results = new ArrayList<String>();
         for (String string : strings) {
-            List<String> result = selector.selectList(string);
+            List<String> result = extractor.selectList(string);
             results.addAll(result);
         }
         return new PlainText(results);
@@ -53,7 +52,7 @@ public abstract class AbstractSelectable implements Selectable {
     }
 
     @Override
-    public Selectable jsonPath(String jsonPath) {
+    public Extractable jsonPath(String jsonPath) {
         throw new UnsupportedOperationException();
     }
 
@@ -67,29 +66,29 @@ public abstract class AbstractSelectable implements Selectable {
     }
 
     @Override
-    public Selectable select(Selector selector) {
-        return select(selector, getSourceTexts());
+    public Extractable extract(Extractor extractor) {
+        return select(extractor, getSourceTexts());
     }
 
     @Override
-    public Selectable selectList(Selector selector) {
-        return selectList(selector, getSourceTexts());
+    public Extractable selectList(Extractor extractor) {
+        return selectList(extractor, getSourceTexts());
     }
 
     @Override
-    public Selectable regex(String regex) {
-        RegexSelector regexSelector = Selectors.regex(regex);
-        return selectList(regexSelector, getSourceTexts());
+    public Extractable regex(String regex) {
+        RegexExtractor regexExtractor = Extractors.regex(regex);
+        return selectList(regexExtractor, getSourceTexts());
     }
 
     @Override
-    public Selectable regex(String regex, int group) {
-        RegexSelector regexSelector = Selectors.regex(regex, group);
-        return selectList(regexSelector, getSourceTexts());
+    public Extractable regex(String regex, int group) {
+        RegexExtractor regexExtractor = Extractors.regex(regex, group);
+        return selectList(regexExtractor, getSourceTexts());
     }
 
     @Override
-    public Selectable replace(String regex, String replacement) {
+    public Extractable replace(String regex, String replacement) {
         ReplaceSelector replaceSelector = new ReplaceSelector(regex,replacement);
         return select(replaceSelector, getSourceTexts());
     }

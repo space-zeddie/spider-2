@@ -8,13 +8,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Selectable plain text.<br>
- * Can not be selected by XPath or CSS Selector.
+ * Extractable plain text.<br>
+ * Can not be selected by XPath or CSS Extractor.
  *
  * @author code4crafter@gmail.com <br>
  * @since 0.1.0
  */
-public class PlainText extends AbstractSelectable {
+public class PlainText extends AnyExtractable {
 
     protected List<String> sourceTexts;
 
@@ -32,33 +32,33 @@ public class PlainText extends AbstractSelectable {
     }
 
     @Override
-    public Selectable xpath(String xpath) {
-        throw new UnsupportedOperationException("XPath can not apply to plain text. Please check whether you use a previous xpath with attribute select (/@href etc).");
+    public Extractable xpath(String xpath) {
+        throw new UnsupportedOperationException("XPath can not apply to plain text. Please check whether you use a previous xpath with attribute extract (/@href etc).");
     }
 
     @Override
-    public Selectable $(String selector) {
-        throw new UnsupportedOperationException("$ can not apply to plain text. Please check whether you use a previous xpath with attribute select (/@href etc).");
+    public Extractable $(String selector) {
+        throw new UnsupportedOperationException("$ can not apply to plain text. Please check whether you use a previous xpath with attribute extract (/@href etc).");
     }
 
     @Override
-    public Selectable $(String selector, String attrName) {
-        throw new UnsupportedOperationException("$ can not apply to plain text. Please check whether you use a previous xpath with attribute select (/@href etc).");
+    public Extractable $(String selector, String attrName) {
+        throw new UnsupportedOperationException("$ can not apply to plain text. Please check whether you use a previous xpath with attribute extract (/@href etc).");
     }
 
     @Override
-    public Selectable smartContent() {
-        throw new UnsupportedOperationException("Smart content can not apply to plain text. Please check whether you use a previous xpath with attribute select (/@href etc).");
+    public Extractable smartContent() {
+        throw new UnsupportedOperationException("Smart content can not apply to plain text. Please check whether you use a previous xpath with attribute extract (/@href etc).");
     }
 
     @Override
-    public Selectable links() {
-        throw new UnsupportedOperationException("Links can not apply to plain text. Please check whether you use a previous xpath with attribute select (/@href etc).");
+    public Extractable links() {
+        throw new UnsupportedOperationException("Links can not apply to plain text. Please check whether you use a previous xpath with attribute extract (/@href etc).");
     }
 
     @Override
-    public List<Selectable> nodes() {
-        List<Selectable> nodes = new ArrayList<Selectable>(getSourceTexts().size());
+    public List<Extractable> nodes() {
+        List<Extractable> nodes = new ArrayList<Extractable>(getSourceTexts().size());
         for (String string : getSourceTexts()) {
             nodes.add(PlainText.create(string));
         }

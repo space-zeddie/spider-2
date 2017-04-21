@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ListIterator;
 
-public class HtmlNode extends AbstractSelectable {
+public class HtmlNode extends AnyExtractable {
 
     private final List<Element> elements;
 
@@ -28,42 +28,42 @@ public class HtmlNode extends AbstractSelectable {
     }
 
     @Override
-    public Selectable smartContent() {
-        SmartContentSelector smartContentSelector = Selectors.smartContent();
-        return select(smartContentSelector, getSourceTexts());
+    public Extractable smartContent() {
+        SmartContentExtractor smartContentExtractor = Extractors.smartContent();
+        return select(smartContentExtractor, getSourceTexts());
     }
 
     @Override
-    public Selectable links() {
-        return selectElements(new LinksSelector());
+    public Extractable links() {
+        return extractElements(new LinksExtractor());
     }
 
     @Override
-    public Selectable xpath(String xpath) {
-        XpathSelector xpathSelector = Selectors.xpath(xpath);
-        return selectElements(xpathSelector);
+    public Extractable xpath(String xpath) {
+        XpathExtractor xpathSelector = Extractors.xpath(xpath);
+        return extractElements(xpathSelector);
     }
 
     @Override
-    public Selectable selectList(Selector selector) {
-        if (selector instanceof BaseElementSelector) {
-            return selectElements((BaseElementSelector) selector);
+    public Extractable selectList(Extractor extractor) {
+        if (extractor instanceof BasicElementExtractor) {
+            return extractElements((BasicElementExtractor) extractor);
         }
-        return selectList(selector, getSourceTexts());
+        return selectList(extractor, getSourceTexts());
     }
 
     @Override
-    public Selectable select(Selector selector) {
-        return selectList(selector);
+    public Extractable extract(Extractor extractor) {
+        return selectList(extractor);
     }
 
     /**
-     * select elements
+     * extract elements
      *
      * @param elementSelector elementSelector
      * @return result
      */
-    protected Selectable selectElements(BaseElementSelector elementSelector) {
+    protected Extractable extractElements(BasicElementExtractor elementSelector) {
         ListIterator<Element> elementIterator = getElements().listIterator();
         if (!elementSelector.hasAttribute()) {
             List<Element> resultElements = new ArrayList<Element>();
@@ -87,7 +87,7 @@ public class HtmlNode extends AbstractSelectable {
     }
 
     /**
-     * Only document can be select
+     * Only document can be extract
      * See: https://github.com/code4craft/webmagic/issues/113
      *
      * @param elementIterator elementIterator
@@ -106,26 +106,26 @@ public class HtmlNode extends AbstractSelectable {
     }
 
     @Override
-    public Selectable $(String selector) {
-        CssSelector cssSelector = Selectors.$(selector);
-        return selectElements(cssSelector);
+    public Extractable $(String selector) {
+        CssExtractor cssSelector = Extractors.$(selector);
+        return extractElements(cssSelector);
     }
 
     @Override
-    public Selectable $(String selector, String attrName) {
-        CssSelector cssSelector = Selectors.$(selector, attrName);
-        return selectElements(cssSelector);
+    public Extractable $(String selector, String attrName) {
+        CssExtractor cssSelector = Extractors.$(selector, attrName);
+        return extractElements(cssSelector);
     }
 
     @Override
-    public List<Selectable> nodes() {
-        List<Selectable> selectables = new ArrayList<Selectable>();
+    public List<Extractable> nodes() {
+        List<Extractable> extractables = new ArrayList<Extractable>();
         for (Element element : getElements()) {
             List<Element> childElements = new ArrayList<Element>(1);
             childElements.add(element);
-            selectables.add(new HtmlNode(childElements));
+            extractables.add(new HtmlNode(childElements));
         }
-        return selectables;
+        return extractables;
     }
 
     @Override

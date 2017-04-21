@@ -8,7 +8,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
 
-public class ReplaceSelector implements Selector {
+public class ReplaceSelector implements Extractor {
 
     private String regexStr;
 

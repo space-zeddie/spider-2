@@ -7,30 +7,30 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * All selectors will be arranged as a pipeline. <br>
+ * All extractors will be arranged as a pipeline. <br>
  * The next selector uses the result of the previous as source.
  */
-public class AndSelector implements Selector {
+public class AndExtractor implements Extractor {
 
-    private List<Selector> selectors = new ArrayList<Selector>();
+    private List<Extractor> extractors = new ArrayList<Extractor>();
 
-    public AndSelector(Selector... selectors) {
-        for (Selector selector : selectors) {
-            this.selectors.add(selector);
+    public AndExtractor(Extractor... extractors) {
+        for (Extractor extractor : extractors) {
+            this.extractors.add(extractor);
         }
     }
 
-    public AndSelector(List<Selector> selectors) {
-        this.selectors = selectors;
+    public AndExtractor(List<Extractor> extractors) {
+        this.extractors = extractors;
     }
 
     @Override
     public String select(String text) {
-        for (Selector selector : selectors) {
+        for (Extractor extractor : extractors) {
             if (text == null) {
                 return null;
             }
-            text = selector.select(text);
+            text = extractor.select(text);
         }
         return text;
     }
@@ -39,14 +39,14 @@ public class AndSelector implements Selector {
     public List<String> selectList(String text) {
         List<String> results = new ArrayList<String>();
         boolean first = true;
-        for (Selector selector : selectors) {
+        for (Extractor extractor : extractors) {
             if (first) {
-                results = selector.selectList(text);
+                results = extractor.selectList(text);
                 first = false;
             } else {
                 List<String> resultsTemp = new ArrayList<String>();
                 for (String result : results) {
-                    resultsTemp.addAll(selector.selectList(result));
+                    resultsTemp.addAll(extractor.selectList(result));
                 }
                 results = resultsTemp;
                 if (results == null || results.size() == 0) {

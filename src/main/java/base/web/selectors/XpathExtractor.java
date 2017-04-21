@@ -16,11 +16,11 @@ import java.util.List;
  * @author code4crafter@gmail.com <br>
  * @since 0.3.0
  */
-public class XpathSelector extends BaseElementSelector {
+public class XpathExtractor extends BasicElementExtractor {
 
     private XPathEvaluator xPathEvaluator;
 
-    public XpathSelector(String xpathStr) {
+    public XpathExtractor(String xpathStr) {
         this.xPathEvaluator = Xsoup.compile(xpathStr);
     }
 

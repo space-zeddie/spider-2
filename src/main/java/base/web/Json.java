@@ -3,9 +3,9 @@ package base.web;
 /**
  * Created by matvii on 21.04.17.
  */
-import base.web.selectors.JsonPathSelector;
+import base.web.selectors.JsonPathExtractor;
 import base.web.selectors.PlainText;
-import base.web.selectors.Selectable;
+import base.web.selectors.Extractable;
 import com.alibaba.fastjson.JSON;
 import us.codecraft.xsoup.XTokenQueue;
 
@@ -51,8 +51,8 @@ public class Json extends PlainText {
     }
 
     @Override
-    public Selectable jsonPath(String jsonPath) {
-        JsonPathSelector jsonPathSelector = new JsonPathSelector(jsonPath);
-        return selectList(jsonPathSelector,getSourceTexts());
+    public Extractable jsonPath(String jsonPath) {
+        JsonPathExtractor jsonPathExtractor = new JsonPathExtractor(jsonPath);
+        return selectList(jsonPathExtractor,getSourceTexts());
     }
 }

@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * Links selector based on jsoup. Use absolute url.
  */
-public class LinksSelector extends BaseElementSelector {
+public class LinksExtractor extends BasicElementExtractor {
 
     @Override
     public String select(Element element) {

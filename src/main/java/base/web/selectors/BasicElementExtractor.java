@@ -9,7 +9,7 @@ import org.jsoup.nodes.Element;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class BaseElementSelector implements Selector, ElementSelector {
+public abstract class BasicElementExtractor implements Extractor, ElementExtractor {
 
     @Override
     public String select(String text) {

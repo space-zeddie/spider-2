@@ -11,13 +11,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
 
-/**
- * Selector in regex.<br>
- *
- * @author code4crafter@gmail.com <br>
- * @since 0.1.0
- */
-public class RegexSelector implements Selector {
+public class RegexExtractor implements Extractor {
 
     private String regexStr;
 
@@ -25,7 +19,7 @@ public class RegexSelector implements Selector {
 
     private int group = 1;
 
-    public RegexSelector(String regexStr, int group) {
+    public RegexExtractor(String regexStr, int group) {
         if (StringUtils.isBlank(regexStr)) {
             throw new IllegalArgumentException("regex must not be empty");
         }
@@ -43,7 +37,7 @@ public class RegexSelector implements Selector {
         this.group = group;
     }
 
-    public RegexSelector(String regexStr) {
+    public RegexExtractor(String regexStr) {
         this(regexStr, 1);
     }
 

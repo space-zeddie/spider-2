@@ -10,24 +10,24 @@ import java.util.List;
  * All extractors will do extracting separately, <br>
  * and the results of extractors will combined as the final result.
  */
-public class OrSelector implements Selector {
+public class OrExtractor implements Extractor {
 
-    private List<Selector> selectors = new ArrayList<Selector>();
+    private List<Extractor> extractors = new ArrayList<Extractor>();
 
-    public OrSelector(Selector... selectors) {
-        for (Selector selector : selectors) {
-            this.selectors.add(selector);
+    public OrExtractor(Extractor... extractors) {
+        for (Extractor extractor : extractors) {
+            this.extractors.add(extractor);
         }
     }
 
-    public OrSelector(List<Selector> selectors) {
-        this.selectors = selectors;
+    public OrExtractor(List<Extractor> extractors) {
+        this.extractors = extractors;
     }
 
     @Override
     public String select(String text) {
-        for (Selector selector : selectors) {
-            String result = selector.select(text);
+        for (Extractor extractor : extractors) {
+            String result = extractor.select(text);
             if (result != null) {
                 return result;
             }
@@ -38,8 +38,8 @@ public class OrSelector implements Selector {
     @Override
     public List<String> selectList(String text) {
         List<String> results = new ArrayList<String>();
-        for (Selector selector : selectors) {
-            List<String> strings = selector.selectList(text);
+        for (Extractor extractor : extractors) {
+            List<String> strings = extractor.selectList(text);
             results.addAll(strings);
         }
         return results;

@@ -3,8 +3,8 @@ package base.web;
 /**
  * Created by matvii on 10.04.17.
  */
-import base.web.selectors.ElementSelector;
-import base.web.selectors.Selector;
+import base.web.selectors.ElementExtractor;
+import base.web.selectors.Extractor;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -16,7 +16,7 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * Selectable html.<br>
+ * Extractable html.<br>
  *
  * @author code4crafter@gmail.com <br>
  * @since 0.1.0
@@ -83,24 +83,24 @@ public class Html extends HtmlNode {
     }
 
     /**
-     * @param selector selector
+     * @param extractor extractor
      * @return result
      */
-    public String selectDocument(Selector selector) {
-        if (selector instanceof ElementSelector) {
-            ElementSelector elementSelector = (ElementSelector) selector;
-            return elementSelector.select(getDocument());
+    public String selectDocument(Extractor extractor) {
+        if (extractor instanceof ElementExtractor) {
+            ElementExtractor elementExtractor = (ElementExtractor) extractor;
+            return elementExtractor.select(getDocument());
         } else {
-            return selector.select(getFirstSourceText());
+            return extractor.select(getFirstSourceText());
         }
     }
 
-    public List<String> selectDocumentForList(Selector selector) {
-        if (selector instanceof ElementSelector) {
-            ElementSelector elementSelector = (ElementSelector) selector;
-            return elementSelector.selectList(getDocument());
+    public List<String> selectDocumentForList(Extractor extractor) {
+        if (extractor instanceof ElementExtractor) {
+            ElementExtractor elementExtractor = (ElementExtractor) extractor;
+            return elementExtractor.selectList(getDocument());
         } else {
-            return selector.selectList(getFirstSourceText());
+            return extractor.selectList(getFirstSourceText());
         }
     }
 
