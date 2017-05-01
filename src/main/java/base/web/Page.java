@@ -18,7 +18,7 @@ import java.util.Map;
  * {@link #getUrl()} get url of current page                   <br>
  * {@link #getHtml()}  get content of current page                 <br>
  * {@link #putField(String, Object)}  save extracted result            <br>
- * {@link #getResultItems()} get extract results to be used in Pipeline<br>
+ * {@link #getResultItems()} get extract results to be used in Output<br>
  * {@link #addTargetRequests(java.util.List)} {@link #addTargetRequest(String)} add urls to fetch                 <br>
  *
  */

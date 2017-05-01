@@ -11,7 +11,7 @@ import java.util.Map;
 
 /**
  * Object contains extract results.<br>
- * It is contained in Page and will be processed in pipeline.
+ * It is contained in Page and will be processed in output.
  */
 public class ResultItems {
 
@@ -49,7 +49,7 @@ public class ResultItems {
 
     /**
      * Whether to skip the result.<br>
-     * Result which is skipped will not be processed by Pipeline.
+     * Result which is skipped will not be processed by Output.
      *
      * @return whether to skip the result
      */
@@ -60,7 +60,7 @@ public class ResultItems {
 
     /**
      * Set whether to skip the result.<br>
-     * Result which is skipped will not be processed by Pipeline.
+     * Result which is skipped will not be processed by Output.
      *
      * @param skip whether to skip the result
      * @return this
