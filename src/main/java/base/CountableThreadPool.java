@@ -44,7 +44,7 @@ public class CountableThreadPool {
         return threadNum;
     }
 
-    
+
     public boolean isShutdown() {
         return executorService.isShutdown();
     }
@@ -52,6 +52,41 @@ public class CountableThreadPool {
     public void shutdown() {
         executorService.shutdown();
     }
+
+    
+    public void execute(final Runnable runnable) {
+        if (threadAlive.get() >= threadNum) {
+            try {
+                reentrantLock.lock();
+                while (threadAlive.get() >= threadNum) {
+                    try {
+                        condition.await();
+                    } catch (InterruptedException e) {
+                    }
+                }
+            } finally {
+                reentrantLock.unlock();
+            }
+        }
+        threadAlive.incrementAndGet();
+        executorService.execute(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    runnable.run();
+                } finally {
+                    try {
+                        reentrantLock.lock();
+                        threadAlive.decrementAndGet();
+                        condition.signal();
+                    } finally {
+                        reentrantLock.unlock();
+                    }
+                }
+            }
+        });
+    }
+
 
 
 }
