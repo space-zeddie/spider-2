@@ -14,12 +14,12 @@ import base.output.ResultItemsCollectOutput;
 import base.scheduler.IScheduler;
 import base.scheduler.QueueScheduler;
 import base.utils.UrlUtils;
+import base.utils.CollectionUtils;
 import base.web.Page;
 import base.web.Request;
 import base.web.Site;
 import base.web.downloaders.HTTPClientDownloader;
 import base.web.downloaders.IDownloader;
-import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.SerializationUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -311,7 +311,7 @@ public class Spider implements Runnable, Task {
     }
 
     protected void onError(Request request) {
-        if (CollectionUtils.isNotEmpty(spiderListeners)) {
+        if (org.apache.commons.collections.CollectionUtils.isNotEmpty(spiderListeners)) {
             for (ISpiderListener spiderListener : spiderListeners) {
                 spiderListener.onError(request);
             }
@@ -319,7 +319,7 @@ public class Spider implements Runnable, Task {
     }
 
     protected void onSuccess(Request request) {
-        if (CollectionUtils.isNotEmpty(spiderListeners)) {
+        if (org.apache.commons.collections.CollectionUtils.isNotEmpty(spiderListeners)) {
             for (ISpiderListener spiderListener : spiderListeners) {
                 spiderListener.onSuccess(request);
             }
@@ -429,7 +429,7 @@ public class Spider implements Runnable, Task {
     }
 
     protected void extractAndAddRequests(Page page, boolean spawnUrl) {
-        if (spawnUrl && CollectionUtils.isNotEmpty(page.getTargetRequests())) {
+        if (spawnUrl && org.apache.commons.collections.CollectionUtils.isNotEmpty(page.getTargetRequests())) {
             for (Request request : page.getTargetRequests()) {
                 addRequest(request);
             }
@@ -498,7 +498,7 @@ public class Spider implements Runnable, Task {
     }
 
     public <T> T get(String url) {
-        List<String> urls = WMCollections.newArrayList(url);
+        List<String> urls = CollectionUtils.newArrayList(url);
         List<T> resultItemses = getAll(urls);
         if (resultItemses != null && resultItemses.size() > 0) {
             return resultItemses.get(0);
@@ -507,12 +507,6 @@ public class Spider implements Runnable, Task {
         }
     }
 
-    /**
-     * Add urls with information to crawl.<br>
-     *
-     * @param requests requests
-     * @return this
-     */
     public Spider addRequest(Request... requests) {
         for (Request request : requests) {
             addRequest(request);

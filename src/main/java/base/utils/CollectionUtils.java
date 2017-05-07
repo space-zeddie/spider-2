@@ -6,11 +6,9 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * @author code4crafter@gmail.com
- *         Date: 16/12/18
- *         Time: 上午10:16
+ * Created by matvii on 11.04.17.
  */
-public class WMCollections {
+public class CollectionUtils {
 
     public static <T> Set<T> newHashSet(T... t){
         Set<T> set = new HashSet<T>(t.length);
