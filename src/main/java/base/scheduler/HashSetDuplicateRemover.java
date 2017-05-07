@@ -1,6 +1,7 @@
-package base.scheduler.component;
+package base.scheduler;
 
 import base.Task;
+import base.scheduler.DuplicateRemover;
 import base.web.Request;
 
 import java.util.Collections;

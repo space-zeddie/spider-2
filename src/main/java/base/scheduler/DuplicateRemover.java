@@ -1,4 +1,4 @@
-package base.scheduler.component;
+package base.scheduler;
 
 
 import base.Task;
