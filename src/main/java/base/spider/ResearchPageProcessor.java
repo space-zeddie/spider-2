@@ -33,6 +33,6 @@ public class ResearchPageProcessor implements PageProcessor {
 
     @Override
     public Site getSite() {
-        return null;
+        return site;
     }
 }
