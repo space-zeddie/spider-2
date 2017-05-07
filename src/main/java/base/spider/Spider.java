@@ -35,31 +35,7 @@ import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
- * Entrance of a crawler.<br>
- * A spider contains four modules: downloader, IScheduler, IPageProcessor and
- * Pipeline.<br>
- * Every module is a field of Spider. <br>
- * The modules are defined in interface. <br>
- * You can customize a spider with various implementations of them. <br>
- * Examples: <br>
- * <br>
- * A simple crawler: <br>
- * Spider.create(new SimplePageProcessor("http://my.oschina.net/",
- * "http://my.oschina.net/*blog/*")).run();<br>
- * <br>
- * Store results to files by FilePipeline: <br>
- * Spider.create(new SimplePageProcessor("http://my.oschina.net/",
- * "http://my.oschina.net/*blog/*")) <br>
- * .pipeline(new FilePipeline("/data/temp/webmagic/")).run(); <br>
- * <br>
- * Use FileCacheQueueScheduler to store urls and cursor in files, so that a
- * Spider can resume the status when shutdown. <br>
- * Spider.create(new SimplePageProcessor("http://my.oschina.net/",
- * "http://my.oschina.net/*blog/*")) <br>
- * .scheduler(new FileCacheQueueScheduler("/data/temp/webmagic/cache/")).run(); <br>
- *
  * Created by matvii on 13.04.17.
- * @since 0.1.0
  */
 public class Spider implements Runnable, Task {
 
