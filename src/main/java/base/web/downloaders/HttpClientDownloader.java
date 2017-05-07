@@ -1,6 +1,8 @@
 package base.web.downloaders;
 
 import base.Task;
+import base.proxy.Proxy;
+import base.proxy.ProxyProvider;
 import base.utils.CharsetUtils;
 import base.web.Page;
 import base.web.Request;
@@ -9,8 +11,8 @@ import base.web.selectors.PlainText;
 import org.apache.commons.io.IOUtils;
 import org.apache.http.HttpResponse;
 import org.apache.http.annotation.ThreadSafe;
-import org.apache.http.client.methods.CloseableHttpResponse;
-import org.apache.http.impl.client.CloseableHttpClient;
+//import org.apache.http.client.methods.CloseableHttpResponse;
+//import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.*;
 import org.apache.http.impl.*;
@@ -54,12 +56,13 @@ public class HttpClientDownloader extends AbstractDownloader {
         this.proxyProvider = proxyProvider;
     }
 
-    private CloseableHttpClient getHttpClient(Site site) {
+    private HttpClient getHttpClient(Site site) {
         if (site == null) {
-            return httpClientGenerator.getClient(null);
+            return httpClients.get(null);
+            //return httpClientGenerator.getClient(null);
         }
         String domain = site.getDomain();
-        HttpClientt httpClient = httpClients.get(domain);
+        HttpClient httpClient = httpClients.get(domain);
         if (httpClient == null) {
             synchronized (this) {
                 httpClient = httpClients.get(domain);
@@ -78,8 +81,8 @@ public class HttpClientDownloader extends AbstractDownloader {
             throw new NullPointerException("task or site can not be null");
         }
         logger.debug("downloading page {}", request.getUrl());
-        CloseableHttpResponse httpResponse = null;
-        CloseableHttpClient httpClient = getHttpClient(task.getSite());
+        HttpResponse httpResponse = null;
+        HttpClient httpClient = getHttpClient(task.getSite());
         Proxy proxy = proxyProvider != null ? proxyProvider.getProxy(task) : null;
         HttpClientRequestContext requestContext = httpUriRequestConverter.convert(request, task.getSite(), proxy);
         Page page = Page.fail();
