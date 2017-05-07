@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Created by matvii on 11.04.17.
  */
-public class ResultItemsCollectOutput implements CollectOutput<ResultItems> {
+public class ResultItemsCollectOutput implements ICollectOutput<ResultItems> {
 
     private List<ResultItems> collector = new ArrayList<ResultItems>();
 

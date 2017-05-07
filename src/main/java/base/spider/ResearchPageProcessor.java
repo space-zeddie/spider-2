@@ -1,16 +1,15 @@
 package base.spider;
 
-import base.PageProcessor;
+import base.IPageProcessor;
 import base.web.Page;
 import base.web.Site;
 
-import java.util.LinkedList;
 import java.util.List;
 
 /**
  * Created by matvii on 07.05.17.
  */
-public class ResearchPageProcessor implements PageProcessor {
+public class ResearchPageProcessor implements IPageProcessor {
 
     private Site site = Site.instance()
             .setRetryTimes(Constants.RETRY_TIMES)

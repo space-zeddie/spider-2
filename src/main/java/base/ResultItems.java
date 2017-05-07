@@ -49,7 +49,7 @@ public class ResultItems {
 
     /**
      * Whether to skip the result.<br>
-     * Result which is skipped will not be processed by Output.
+     * Result which is skipped will not be processed by IOutput.
      *
      * @return whether to skip the result
      */
@@ -60,7 +60,7 @@ public class ResultItems {
 
     /**
      * Set whether to skip the result.<br>
-     * Result which is skipped will not be processed by Output.
+     * Result which is skipped will not be processed by IOutput.
      *
      * @param skip whether to skip the result
      * @return this

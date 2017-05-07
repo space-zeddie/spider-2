@@ -4,10 +4,10 @@ package base.spider;
  * Created by matvii on 01.05.17.
  */
 
-import base.PageProcessor;
+import base.IPageProcessor;
 import base.Task;
 import base.output.ConsoleOutput;
-import base.output.Output;
+import base.output.IOutput;
 import base.scheduler.IScheduler;
 import base.scheduler.QueueScheduler;
 import base.utils.UrlUtils;
@@ -33,7 +33,7 @@ import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * Entrance of a crawler.<br>
- * A spider contains four modules: downloader, IScheduler, PageProcessor and
+ * A spider contains four modules: downloader, IScheduler, IPageProcessor and
  * Pipeline.<br>
  * Every module is a field of Spider. <br>
  * The modules are defined in interface. <br>
@@ -62,9 +62,9 @@ public class Spider implements Runnable, Task {
 
     protected IDownloader downloader;
 
-    protected List<Output> pipelines = new ArrayList<Output>();
+    protected List<IOutput> pipelines = new ArrayList<IOutput>();
 
-    protected PageProcessor pageProcessor;
+    protected IPageProcessor pageProcessor;
 
     protected List<Request> startRequests;
 
@@ -113,9 +113,9 @@ public class Spider implements Runnable, Task {
      *
      * @param pageProcessor pageProcessor
      * @return new spider
-     * @see PageProcessor
+     * @see IPageProcessor
      */
-    public static Spider create(PageProcessor pageProcessor) {
+    public static Spider create(IPageProcessor pageProcessor) {
         return new Spider(pageProcessor);
     }
 
@@ -124,7 +124,7 @@ public class Spider implements Runnable, Task {
      *
      * @param pageProcessor pageProcessor
      */
-    public Spider(PageProcessor pageProcessor) {
+    public Spider(IPageProcessor pageProcessor) {
         this.pageProcessor = pageProcessor;
         this.site = pageProcessor.getSite();
     }
@@ -204,7 +204,7 @@ public class Spider implements Runnable, Task {
      * @see #addPipeline(us.codecraft.webmagic.pipeline.Pipeline)
      * @deprecated
      */
-    public Spider pipeline(Output pipeline) {
+    public Spider pipeline(IOutput pipeline) {
         return addPipeline(pipeline);
     }
 
@@ -216,7 +216,7 @@ public class Spider implements Runnable, Task {
      * @see Pipeline
      * @since 0.2.1
      */
-    public Spider addPipeline(Output pipeline) {
+    public Spider addPipeline(IOutput pipeline) {
         checkIfRunning();
         this.pipelines.add(pipeline);
         return this;
@@ -230,7 +230,7 @@ public class Spider implements Runnable, Task {
      * @see Pipeline
      * @since 0.4.1
      */
-    public Spider setPipelines(List<Output> pipelines) {
+    public Spider setPipelines(List<IOutput> pipelines) {
         checkIfRunning();
         this.pipelines = pipelines;
         return this;
@@ -242,7 +242,7 @@ public class Spider implements Runnable, Task {
      * @return this
      */
     public Spider clearPipeline() {
-        pipelines = new ArrayList<Output>();
+        pipelines = new ArrayList<IOutput>();
         return this;
     }
 
@@ -363,7 +363,7 @@ public class Spider implements Runnable, Task {
         destroyEach(downloader);
         destroyEach(pageProcessor);
         destroyEach(scheduler);
-        for (Output pipeline : pipelines) {
+        for (IOutput pipeline : pipelines) {
             destroyEach(pipeline);
         }
         threadPool.shutdown();
@@ -408,7 +408,7 @@ public class Spider implements Runnable, Task {
             pageProcessor.process(page);
             extractAndAddRequests(page, spawnUrl);
             if (!page.getResultItems().isSkip()) {
-                for (Output pipeline : pipelines) {
+                for (IOutput pipeline : pipelines) {
                     pipeline.process(page.getResultItems(), this);
                 }
             }

@@ -3,7 +3,6 @@ package base.web;
 /**
  * Created by matvii on 09.04.17.
  */
-import base.Job;
 import base.Task;
 import base.utils.HTTPConsts;
 

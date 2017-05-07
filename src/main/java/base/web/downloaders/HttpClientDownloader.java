@@ -2,7 +2,7 @@ package base.web.downloaders;
 
 import base.Task;
 import base.proxy.Proxy;
-import base.proxy.ProxyProvider;
+import base.proxy.IProxyProvider;
 import base.utils.CharsetUtils;
 import base.utils.HTTPClientUtils;
 import base.web.Page;
@@ -13,14 +13,10 @@ import org.apache.commons.io.IOUtils;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.*;
-import org.apache.http.impl.*;
 import org.apache.http.util.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.Closeable;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.util.HashMap;
@@ -37,7 +33,7 @@ public class HttpClientDownloader extends AbstractDownloader {
 
     private HttpUriRequestConverter httpUriRequestConverter = new HttpUriRequestConverter();
 
-    private ProxyProvider proxyProvider;
+    private IProxyProvider proxyProvider;
 
     private boolean responseHeader = true;
 
@@ -45,7 +41,7 @@ public class HttpClientDownloader extends AbstractDownloader {
         this.httpUriRequestConverter = httpUriRequestConverter;
     }
 
-    public void setProxyProvider(ProxyProvider proxyProvider) {
+    public void setProxyProvider(IProxyProvider proxyProvider) {
         this.proxyProvider = proxyProvider;
     }
 

@@ -18,7 +18,7 @@ import java.util.Map;
  */
 
 @ThreadSafe
-public class FileOutput extends FileUtils implements Output {
+public class FileOutput extends FileUtils implements IOutput {
 
     private Logger logger = LoggerFactory.getLogger(getClass());
 

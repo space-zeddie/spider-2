@@ -8,7 +8,7 @@ import java.util.Map;
 /**
  * Created by matvii on 11.04.17.
  */
-public class ConsoleOutput implements Output {
+public class ConsoleOutput implements IOutput {
 
     @Override
     public void process(ResultItems resultItems, Task task) {

@@ -3,11 +3,11 @@ package base.output;
 import java.util.List;
 
 /**
- * Output that can collect and store results.
+ * IOutput that can collect and store results.
  *
  * Created by matvii on 11.04.17.
  */
-public interface CollectOutput<T> extends Output {
+public interface ICollectOutput<T> extends IOutput {
 
     /**
      * Get all results collected.
