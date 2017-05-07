@@ -22,8 +22,13 @@ public class ResearchPageProcessor implements PageProcessor {
         // higher priority to .pdf links, since they most likely contain the papers themselves
         page.addTargetRequests(page.getHtml().links().regex("https://*\\.pdf").all(), 10);
         page.addTargetRequests(page.getHtml().links().regex("http://*\\.pdf").all(), 10);
-        
-        //page.addTargetRequest(page.);
+        // TO DO: non-pdf linksg
+
+        page.putField("paper", page.getUrl().regex("https://*\\.pdf").toString());
+        page.putField("links", page.getHtml().$("a", "href").all());
+        if (page.getResultItems().get("paper")==null || page.getResultItems().get("links")==null
+                || ((List<String>)page.getResultItems().get("links")).size()==0)
+            page.setSkip(true);
     }
 
     @Override
