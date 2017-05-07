@@ -8,6 +8,8 @@ import base.PageProcessor;
 import base.Task;
 import base.output.ConsoleOutput;
 import base.output.Output;
+import base.scheduler.QueueScheduler;
+import base.scheduler.Scheduler;
 import base.utils.UrlUtils;
 import base.web.Page;
 import base.web.Request;
@@ -98,7 +100,7 @@ public class Spider implements Runnable, Task {
 
     private Condition newUrlCondition = newUrlLock.newCondition();
 
-    private List<SpiderListener> spiderListeners;
+    private List<ISpiderListener> spiderListeners;
 
     private final AtomicLong pageCount = new AtomicLong(0);
 
@@ -331,7 +333,7 @@ public class Spider implements Runnable, Task {
 
     protected void onError(Request request) {
         if (CollectionUtils.isNotEmpty(spiderListeners)) {
-            for (SpiderListener spiderListener : spiderListeners) {
+            for (ISpiderListener spiderListener : spiderListeners) {
                 spiderListener.onError(request);
             }
         }
@@ -339,7 +341,7 @@ public class Spider implements Runnable, Task {
 
     protected void onSuccess(Request request) {
         if (CollectionUtils.isNotEmpty(spiderListeners)) {
-            for (SpiderListener spiderListener : spiderListeners) {
+            for (ISpiderListener spiderListener : spiderListeners) {
                 spiderListener.onSuccess(request);
             }
         }
@@ -725,11 +727,11 @@ public class Spider implements Runnable, Task {
         return site;
     }
 
-    public List<SpiderListener> getSpiderListeners() {
+    public List<ISpiderListener> getSpiderListeners() {
         return spiderListeners;
     }
 
-    public Spider setSpiderListeners(List<SpiderListener> spiderListeners) {
+    public Spider setSpiderListeners(List<ISpiderListener> spiderListeners) {
         this.spiderListeners = spiderListeners;
         return this;
     }
