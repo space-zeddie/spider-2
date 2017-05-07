@@ -28,10 +28,6 @@ import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
 import java.util.Map;
 
-/**
- * @author code4crafter@gmail.com <br>
- * @since 0.4.0
- */
 public class HttpClientGenerator {
 	
 	private transient Logger logger = LoggerFactory.getLogger(getClass());
@@ -49,7 +45,7 @@ public class HttpClientGenerator {
 
 	private SSLConnectionSocketFactory buildSSLConnectionSocketFactory() {
 		try {
-			return new SSLConnectionSocketFactory(createIgnoreVerifySSL()); // 优先绕过安全证书
+			return new SSLConnectionSocketFactory(createIgnoreVerifySSL());
 		} catch (KeyManagementException e) {
             logger.error("ssl connection fail", e);
         } catch (NoSuchAlgorithmException e) {

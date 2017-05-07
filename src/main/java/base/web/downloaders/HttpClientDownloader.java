@@ -4,6 +4,7 @@ import base.Task;
 import base.proxy.Proxy;
 import base.proxy.ProxyProvider;
 import base.utils.CharsetUtils;
+import base.utils.HTTPClientUtils;
 import base.web.Page;
 import base.web.Request;
 import base.web.Site;
@@ -118,7 +119,7 @@ public class HttpClientDownloader extends AbstractDownloader {
         page.setStatusCode(httpResponse.getStatusLine().getStatusCode());
         page.setDownloadSuccess(true);
         if (responseHeader) {
-            page.setHeaders(HttpClientUtils.convertHeaders(httpResponse.getAllHeaders()));
+            page.setHeaders(HTTPClientUtils.convertHeaders(httpResponse.getAllHeaders()));
         }
         return page;
     }
@@ -141,4 +142,6 @@ public class HttpClientDownloader extends AbstractDownloader {
     private String getHtmlCharset(HttpResponse httpResponse, byte[] contentBytes) throws IOException {
         return CharsetUtils.detectCharset(httpResponse.getEntity().getContentType().getValue(), contentBytes);
     }
+
+
 }
