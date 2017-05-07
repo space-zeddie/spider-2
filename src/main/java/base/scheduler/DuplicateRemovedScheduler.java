@@ -3,13 +3,12 @@ package base.scheduler;
 import base.Task;
 import base.scheduler.component.DuplicateRemover;
 import base.scheduler.component.HashSetDuplicateRemover;
+import base.utils.HTTPConsts;
 import base.web.Request;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Output that can collect and store results.
- *
  * Created by matvii on 11.04.17.
  */
 public abstract class DuplicateRemovedScheduler implements Scheduler {
@@ -41,10 +40,11 @@ public abstract class DuplicateRemovedScheduler implements Scheduler {
     }
 
     protected boolean noNeedToRemoveDuplicate(Request request) {
-        return HttpConstant.Method.POST.equalsIgnoreCase(request.getMethod());
+        return HTTPConsts.Method.POST.equalsIgnoreCase(request.getMethod());
     }
 
     protected void pushWhenNoDuplicate(Request request, Task task) {
+    // TO DO ???
 
     }
 }

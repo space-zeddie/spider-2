@@ -1,17 +1,15 @@
 package base.scheduler;
 
-import us.codecraft.webmagic.Task;
+
+import base.Task;
 
 /**
- * The scheduler whose requests can be counted for monitor.
- *
- * @author code4crafter@gmail.com
- * @since 0.5.0
+ * Created by matvii on 11.04.17.
  */
 public interface MonitorableScheduler extends Scheduler {
 
-    public int getLeftRequestsCount(Task task);
+    int getLeftRequestsCount(Task task);
 
-    public int getTotalRequestsCount(Task task);
+    int getTotalRequestsCount(Task task);
 
 }
