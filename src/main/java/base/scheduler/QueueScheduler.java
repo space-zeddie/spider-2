@@ -1,21 +1,15 @@
 package base.scheduler;
 
-import org.apache.http.annotation.ThreadSafe;
-import us.codecraft.webmagic.Request;
-import us.codecraft.webmagic.Task;
+import base.Task;
+import base.web.Request;
 
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
 
 /**
- * Basic Scheduler implementation.<br>
- * Store urls to fetch in LinkedBlockingQueue and remove duplicate urls by HashMap.
- *
- * @author code4crafter@gmail.com <br>
- * @since 0.1.0
+ * Created by matvii on 11.04.17.
  */
-@ThreadSafe
 public class QueueScheduler extends DuplicateRemovedScheduler implements MonitorableScheduler {
 
     private BlockingQueue<Request> queue = new LinkedBlockingQueue<Request>();

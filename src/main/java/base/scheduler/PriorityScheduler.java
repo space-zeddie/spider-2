@@ -11,10 +11,7 @@ import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.PriorityBlockingQueue;
 
 /**
- * Priority scheduler. Request with higher priority will poll earlier. <br>
- *
- * @author code4crafter@gmail.com <br>
- * @since 0.2.1
+ * Created by matvii on 11.04.17.
  */
 public class PriorityScheduler extends DuplicateRemovedScheduler implements MonitorableScheduler {
 

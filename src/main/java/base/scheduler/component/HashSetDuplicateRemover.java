@@ -1,14 +1,14 @@
 package base.scheduler.component;
 
-import us.codecraft.webmagic.Request;
-import us.codecraft.webmagic.Task;
+import base.Task;
+import base.web.Request;
 
 import java.util.Collections;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * @author code4crafer@gmail.com
+ * Created by matvii on 11.04.17.
  */
 public class HashSetDuplicateRemover implements DuplicateRemover {
 
