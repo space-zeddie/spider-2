@@ -3,7 +3,7 @@ package base.web.downloaders;
 import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.client.protocol.HttpClientContext;
 
-public class HttpClientRequestContext {
+public class HTTPClientRequestContext {
 
     private HttpUriRequest httpUriRequest;
 

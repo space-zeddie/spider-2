@@ -28,13 +28,13 @@ import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
 import java.util.Map;
 
-public class HttpClientGenerator {
+public class HTTPClientGenerator {
 	
 	private transient Logger logger = LoggerFactory.getLogger(getClass());
 	
     private PoolingHttpClientConnectionManager connectionManager;
 
-    public HttpClientGenerator() {
+    public HTTPClientGenerator() {
         Registry<ConnectionSocketFactory> reg = RegistryBuilder.<ConnectionSocketFactory>create()
                 .register("http", PlainConnectionSocketFactory.INSTANCE)
                 .register("https", buildSSLConnectionSocketFactory())
@@ -77,7 +77,7 @@ public class HttpClientGenerator {
 		return sc;
 	}
     
-    public HttpClientGenerator setPoolSize(int poolSize) {
+    public HTTPClientGenerator setPoolSize(int poolSize) {
         connectionManager.setMaxTotal(poolSize);
         return this;
     }

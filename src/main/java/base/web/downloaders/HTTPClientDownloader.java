@@ -23,21 +23,21 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-public class HttpClientDownloader extends AbstractDownloader {
+public class HTTPClientDownloader extends AbstractDownloader {
 
     private Logger logger = LoggerFactory.getLogger(getClass());
 
     private final Map<String, CloseableHttpClient> httpClients = new HashMap<String, CloseableHttpClient>();
 
-    private HttpClientGenerator httpClientGenerator = new HttpClientGenerator();
+    private HTTPClientGenerator httpClientGenerator = new HTTPClientGenerator();
 
-    private HttpUriRequestConverter httpUriRequestConverter = new HttpUriRequestConverter();
+    private HTTPUriRequestConverter httpUriRequestConverter = new HTTPUriRequestConverter();
 
     private IProxyProvider proxyProvider;
 
     private boolean responseHeader = true;
 
-    public void setHttpUriRequestConverter(HttpUriRequestConverter httpUriRequestConverter) {
+    public void setHttpUriRequestConverter(HTTPUriRequestConverter httpUriRequestConverter) {
         this.httpUriRequestConverter = httpUriRequestConverter;
     }
 
@@ -72,7 +72,7 @@ public class HttpClientDownloader extends AbstractDownloader {
         CloseableHttpResponse httpResponse = null;
         CloseableHttpClient httpClient = getHttpClient(task.getSite());
         Proxy proxy = proxyProvider != null ? proxyProvider.getProxy(task) : null;
-        HttpClientRequestContext requestContext = httpUriRequestConverter.convert(request, task.getSite(), proxy);
+        HTTPClientRequestContext requestContext = httpUriRequestConverter.convert(request, task.getSite(), proxy);
         Page page = Page.fail();
         try {
             httpResponse = httpClient.execute(requestContext.getHttpUriRequest(), requestContext.getHttpClientContext());

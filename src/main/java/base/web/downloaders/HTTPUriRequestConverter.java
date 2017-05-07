@@ -20,10 +20,10 @@ import org.apache.http.impl.client.BasicCookieStore;
 import org.apache.http.impl.cookie.BasicClientCookie;
 import java.util.Map;
 
-public class HttpUriRequestConverter {
+public class HTTPUriRequestConverter {
 
-    public HttpClientRequestContext convert(Request request, Site site, Proxy proxy) {
-        HttpClientRequestContext httpClientRequestContext = new HttpClientRequestContext();
+    public HTTPClientRequestContext convert(Request request, Site site, Proxy proxy) {
+        HTTPClientRequestContext httpClientRequestContext = new HTTPClientRequestContext();
         httpClientRequestContext.setHttpUriRequest(convertHttpUriRequest(request, site, proxy));
         httpClientRequestContext.setHttpClientContext(convertHttpClientContext(request, site, proxy));
         return httpClientRequestContext;

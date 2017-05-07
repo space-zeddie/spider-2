@@ -14,7 +14,7 @@ import base.utils.UrlUtils;
 import base.web.Page;
 import base.web.Request;
 import base.web.Site;
-import base.web.downloaders.HttpClientDownloader;
+import base.web.downloaders.HTTPClientDownloader;
 import base.web.downloaders.IDownloader;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.SerializationUtils;
@@ -271,7 +271,7 @@ public class Spider implements Runnable, Task {
 
     protected void initComponent() {
         if (downloader == null) {
-            this.downloader = new HttpClientDownloader();
+            this.downloader = new HTTPClientDownloader();
         }
         if (pipelines.isEmpty()) {
             pipelines.add(new ConsoleOutput());
