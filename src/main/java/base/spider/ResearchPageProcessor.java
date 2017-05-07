@@ -9,7 +9,10 @@ import base.web.Site;
  */
 public class ResearchPageProcessor implements PageProcessor {
 
-    private Site site = Site.instance().setRetryTimes(3).setSleepTime(1000).setTimeOut(10000);
+    private Site site = Site.instance()
+            .setRetryTimes(Constants.RETRY_TIMES)
+            .setSleepTime(Constants.SLEEP_TIME)
+            .setTimeOut(Constants.TIME_OUT);
 
     @Override
     public void process(Page page) {
