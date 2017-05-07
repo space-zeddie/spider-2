@@ -8,6 +8,7 @@ import base.CountableThreadPool;
 import base.IPageProcessor;
 import base.Task;
 import base.output.ConsoleOutput;
+import base.output.ICollectOutput;
 import base.output.IOutput;
 import base.scheduler.IScheduler;
 import base.scheduler.QueueScheduler;
@@ -196,15 +197,6 @@ public class Spider implements Runnable, Task {
         }
         return this;
     }
-
-    /**
-     * add a pipeline for Spider
-     *
-     * @param pipeline pipeline
-     * @return this
-     * @see #addPipeline(us.codecraft.webmagic.pipeline.Pipeline)
-     * @deprecated
-     */
     public Spider pipeline(IOutput pipeline) {
         return addPipeline(pipeline);
     }
@@ -507,7 +499,7 @@ public class Spider implements Runnable, Task {
         for (Request request : UrlUtils.convertToRequests(urls)) {
             addRequest(request);
         }
-        CollectorPipeline collectorPipeline = getCollectorPipeline();
+        ICollectOutput<T> collectorPipeline = getCollectorPipeline();
         pipelines.add(collectorPipeline);
         run();
         spawnUrl = true;
