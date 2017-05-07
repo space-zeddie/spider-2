@@ -4,6 +4,7 @@ package base.spider;
  * Created by matvii on 01.05.17.
  */
 
+import base.CountableThreadPool;
 import base.IPageProcessor;
 import base.Task;
 import base.output.ConsoleOutput;
