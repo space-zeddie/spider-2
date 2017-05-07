@@ -4,7 +4,6 @@ import base.ResultItems;
 import base.Task;
 import base.utils.FileUtils;
 import org.apache.commons.codec.digest.DigestUtils;
-import org.apache.http.annotation.ThreadSafe;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import java.io.FileOutputStream;
@@ -17,7 +16,6 @@ import java.util.Map;
  * Created by matvii on 11.04.17.
  */
 
-@ThreadSafe
 public class FileOutput extends FileUtils implements IOutput {
 
     private Logger logger = LoggerFactory.getLogger(getClass());
