@@ -10,7 +10,6 @@ import base.web.Site;
  */
 public abstract class AbstractDownloader implements IDownloader {
 
-
     public Html download(String url) {
         return download(url, null);
     }
