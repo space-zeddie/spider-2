@@ -12,7 +12,7 @@ import base.utils.UrlUtils;
 import base.web.Page;
 import base.web.Request;
 import base.web.Site;
-import com.sun.org.apache.xml.internal.serializer.OutputPropertiesFactory;
+import base.web.downloaders.IDownloader;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.SerializationUtils;
 import org.slf4j.Logger;
@@ -30,7 +30,7 @@ import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * Entrance of a crawler.<br>
- * A spider contains four modules: Downloader, Scheduler, PageProcessor and
+ * A spider contains four modules: IDownloader, Scheduler, PageProcessor and
  * Pipeline.<br>
  * Every module is a field of Spider. <br>
  * The modules are defined in interface. <br>
@@ -57,7 +57,7 @@ import java.util.concurrent.locks.ReentrantLock;
  */
 public class Spider implements Runnable, Task {
 
-    protected Downloader downloader;
+    protected IDownloader IDownloader;
 
     protected List<Output> pipelines = new ArrayList<Output>();
 
@@ -248,38 +248,38 @@ public class Spider implements Runnable, Task {
     }
 
     /**
-     * set the downloader of spider
+     * set the IDownloader of spider
      *
-     * @param downloader downloader
+     * @param IDownloader IDownloader
      * @return this
      * @see #setDownloader(us.codecraft.webmagic.downloader.Downloader)
      * @deprecated
      */
-    public Spider downloader(Downloader downloader) {
-        return setDownloader(downloader);
+    public Spider downloader(IDownloader IDownloader) {
+        return setIDownloader(IDownloader);
     }
 
     /**
-     * set the downloader of spider
+     * set the IDownloader of spider
      *
-     * @param downloader downloader
+     * @param IDownloader IDownloader
      * @return this
-     * @see Downloader
+     * @see IDownloader
      */
-    public Spider setDownloader(Downloader downloader) {
+    public Spider setIDownloader(IDownloader IDownloader) {
         checkIfRunning();
-        this.downloader = downloader;
+        this.IDownloader = IDownloader;
         return this;
     }
 
     protected void initComponent() {
-        if (downloader == null) {
-            this.downloader = new HttpClientDownloader();
+        if (IDownloader == null) {
+            this.IDownloader = new HttpClientDownloader();
         }
         if (pipelines.isEmpty()) {
             pipelines.add(new ConsoleOutput());
         }
-        downloader.setThread(threadNum);
+        IDownloader.setThread(threadNum);
         if (threadPool == null || threadPool.isShutdown()) {
             if (executorService != null && !executorService.isShutdown()) {
                 threadPool = new CountableThreadPool(threadNum, executorService);
@@ -363,7 +363,7 @@ public class Spider implements Runnable, Task {
     }
 
     public void close() {
-        destroyEach(downloader);
+        destroyEach(IDownloader);
         destroyEach(pageProcessor);
         destroyEach(scheduler);
         for (Output pipeline : pipelines) {
@@ -397,7 +397,7 @@ public class Spider implements Runnable, Task {
     }
 
     private void processRequest(Request request) {
-        Page page = downloader.download(request, this);
+        Page page = IDownloader.download(request, this);
         if (page.isDownloadSuccess()){
             onDownloadSuccess(request, page);
         } else {

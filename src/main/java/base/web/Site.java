@@ -163,7 +163,7 @@ public class Site {
     }
 
     /**
-     * set timeout for downloader in ms
+     * set timeout for IDownloader in ms
      *
      * @param timeOut timeOut
      * @return this
@@ -232,7 +232,7 @@ public class Site {
     }
 
     /**
-     * Put an Http header for downloader. <br>
+     * Put an Http header for IDownloader. <br>
      * Use {@link #addCookie(String, String)} for cookie and {@link #setUserAgent(String)} for user-agent. <br>
      *
      * @param key   key of http header, there are some keys constant in {@link HTTPConsts.Header}
