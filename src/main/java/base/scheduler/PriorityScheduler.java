@@ -1,9 +1,9 @@
 package base.scheduler;
 
-import org.apache.http.annotation.ThreadSafe;
-import us.codecraft.webmagic.Request;
-import us.codecraft.webmagic.Task;
-import us.codecraft.webmagic.utils.NumberUtils;
+
+import base.Task;
+import base.utils.NumberUtils;
+import base.web.Request;
 
 import java.util.Comparator;
 import java.util.concurrent.BlockingQueue;
@@ -16,7 +16,6 @@ import java.util.concurrent.PriorityBlockingQueue;
  * @author code4crafter@gmail.com <br>
  * @since 0.2.1
  */
-@ThreadSafe
 public class PriorityScheduler extends DuplicateRemovedScheduler implements MonitorableScheduler {
 
     public static final int INITIAL_CAPACITY = 5;
