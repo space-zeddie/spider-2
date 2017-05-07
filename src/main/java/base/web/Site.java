@@ -4,6 +4,7 @@ package base.web;
  * Created by matvii on 09.04.17.
  */
 import base.Job;
+import base.Task;
 import base.utils.HTTPConsts;
 
 import java.util.*;
@@ -163,7 +164,7 @@ public class Site {
     }
 
     /**
-     * set timeout for IDownloader in ms
+     * set timeout for downloader in ms
      *
      * @param timeOut timeOut
      * @return this
@@ -232,7 +233,7 @@ public class Site {
     }
 
     /**
-     * Put an Http header for IDownloader. <br>
+     * Put an Http header for downloader. <br>
      * Use {@link #addCookie(String, String)} for cookie and {@link #setUserAgent(String)} for user-agent. <br>
      *
      * @param key   key of http header, there are some keys constant in {@link HTTPConsts.Header}
@@ -306,8 +307,8 @@ public class Site {
         return this;
     }
 
-    public Job toTask() {
-        return new Job() {
+    public Task toTask() {
+        return new Task() {
             @Override
             public String getUUID() {
                 String uuid = Site.this.getDomain();
@@ -323,6 +324,7 @@ public class Site {
             }
         };
     }
+
 
     @Override
     public boolean equals(Object o) {

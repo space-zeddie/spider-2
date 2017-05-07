@@ -11,6 +11,6 @@ public interface IDownloader {
 
     public Page download(Request request, Task task);
 
-    // Tell the IDownloader how many threads the spider used
+    // Tell the downloader how many threads the spider used
     public void setThread(int threadNum);
 }
