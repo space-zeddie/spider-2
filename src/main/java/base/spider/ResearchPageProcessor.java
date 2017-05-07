@@ -18,15 +18,18 @@ public class ResearchPageProcessor implements IPageProcessor {
 
     @Override
     public void process(Page page) {
-        String charset = page.getHtml().$("meta", "charset").get();
+        String[] header = page.getHeaders().get("Content-Type").get(0).split(";charset=");
+        if (header.length > 1) {
+            //System.out.println(header[1]);
+            site.setCharset(header[1]);
+        }
 
-        System.out.println("here 1 " + charset);
         // higher priority to .pdf links, since they most likely contain the papers themselves
         page.addTargetRequests(page.getHtml().links().regex("https://.*\\.pdf").all(), 10);
         page.addTargetRequests(page.getHtml().links().regex("http://.*\\.pdf").all(), 10);
-       // for (String link : page.getHtml().links().all()) {
-            //System.out.println(link);
-        //}
+        for (String link : page.getHtml().links().all()) {
+            System.out.println(link);
+        }
         //System.out.println("");
         // TO DO: non-pdf linksg
 
