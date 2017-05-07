@@ -10,6 +10,7 @@ import base.Task;
 import base.output.ConsoleOutput;
 import base.output.ICollectOutput;
 import base.output.IOutput;
+import base.output.ResultItemsCollectOutput;
 import base.scheduler.IScheduler;
 import base.scheduler.QueueScheduler;
 import base.utils.UrlUtils;
@@ -201,28 +202,13 @@ public class Spider implements Runnable, Task {
         return addPipeline(pipeline);
     }
 
-    /**
-     * add a pipeline for Spider
-     *
-     * @param pipeline pipeline
-     * @return this
-     * @see Pipeline
-     * @since 0.2.1
-     */
+
     public Spider addPipeline(IOutput pipeline) {
         checkIfRunning();
         this.pipelines.add(pipeline);
         return this;
     }
 
-    /**
-     * set pipelines for Spider
-     *
-     * @param pipelines pipelines
-     * @return this
-     * @see Pipeline
-     * @since 0.4.1
-     */
     public Spider setPipelines(List<IOutput> pipelines) {
         checkIfRunning();
         this.pipelines = pipelines;
@@ -507,8 +493,8 @@ public class Spider implements Runnable, Task {
         return collectorPipeline.getCollected();
     }
 
-    protected CollectorPipeline getCollectorPipeline() {
-        return new ResultItemsCollectorPipeline();
+    protected ICollectOutput getCollectorPipeline() {
+        return new ResultItemsCollectOutput();
     }
 
     public <T> T get(String url) {
