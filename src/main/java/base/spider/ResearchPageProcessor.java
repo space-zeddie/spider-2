@@ -36,7 +36,7 @@ public class ResearchPageProcessor implements IPageProcessor {
             page.putField("paper_name", null);
         }
         if (page.getResultItems().get("paper")==null && page.getResultItems().get("paper_name")==null
-                && ((List<String>)page.getResultItems().get("links")).size()==0)
+                )
             page.setSkip(true);
     }
 
