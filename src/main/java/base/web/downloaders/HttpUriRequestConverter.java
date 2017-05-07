@@ -1,5 +1,10 @@
 package base.web.downloaders;
 
+import base.Proxy;
+import base.utils.HTTPConsts;
+import base.utils.UrlUtils;
+import base.web.Request;
+import base.web.Site;
 import org.apache.http.HttpHost;
 import org.apache.http.auth.AuthState;
 import org.apache.http.auth.UsernamePasswordCredentials;
@@ -13,21 +18,8 @@ import org.apache.http.entity.ByteArrayEntity;
 import org.apache.http.impl.auth.BasicScheme;
 import org.apache.http.impl.client.BasicCookieStore;
 import org.apache.http.impl.cookie.BasicClientCookie;
-import us.codecraft.webmagic.Request;
-import us.codecraft.webmagic.Site;
-import us.codecraft.webmagic.proxy.Proxy;
-import us.codecraft.webmagic.utils.HttpConstant;
-import us.codecraft.webmagic.utils.UrlUtils;
-
 import java.util.Map;
 
-/**
- * @author code4crafter@gmail.com
- *         Date: 17/3/18
- *         Time: 11:28
- *
- * @since 0.7.0
- */
 public class HttpUriRequestConverter {
 
     public HttpClientRequestContext convert(Request request, Site site, Proxy proxy) {
@@ -87,18 +79,18 @@ public class HttpUriRequestConverter {
 
     private RequestBuilder selectRequestMethod(Request request) {
         String method = request.getMethod();
-        if (method == null || method.equalsIgnoreCase(HttpConstant.Method.GET)) {
+        if (method == null || method.equalsIgnoreCase(HTTPConsts.Method.GET)) {
             //default get
             return RequestBuilder.get();
-        } else if (method.equalsIgnoreCase(HttpConstant.Method.POST)) {
+        } else if (method.equalsIgnoreCase(HTTPConsts.Method.POST)) {
             return addFormParams(RequestBuilder.post(),request);
-        } else if (method.equalsIgnoreCase(HttpConstant.Method.HEAD)) {
+        } else if (method.equalsIgnoreCase(HTTPConsts.Method.HEAD)) {
             return RequestBuilder.head();
-        } else if (method.equalsIgnoreCase(HttpConstant.Method.PUT)) {
+        } else if (method.equalsIgnoreCase(HTTPConsts.Method.PUT)) {
             return addFormParams(RequestBuilder.put(), request);
-        } else if (method.equalsIgnoreCase(HttpConstant.Method.DELETE)) {
+        } else if (method.equalsIgnoreCase(HTTPConsts.Method.DELETE)) {
             return RequestBuilder.delete();
-        } else if (method.equalsIgnoreCase(HttpConstant.Method.TRACE)) {
+        } else if (method.equalsIgnoreCase(HTTPConsts.Method.TRACE)) {
             return RequestBuilder.trace();
         }
         throw new IllegalArgumentException("Illegal HTTP Method " + method);
