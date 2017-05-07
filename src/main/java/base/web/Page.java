@@ -3,7 +3,7 @@ package base.web; /**
  */
 import base.ResultItems;
 import base.utils.UrlUtils;
-import base.web.selectors.Extractable;
+import base.web.extractors.Extractable;
 import org.apache.commons.lang3.StringUtils;
 import base.utils.HTTPConsts;
 

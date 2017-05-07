@@ -8,7 +8,7 @@ import base.utils.HTTPClientUtils;
 import base.web.Page;
 import base.web.Request;
 import base.web.Site;
-import base.web.selectors.PlainText;
+import base.web.extractors.PlainText;
 import org.apache.commons.io.IOUtils;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.CloseableHttpResponse;

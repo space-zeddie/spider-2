@@ -3,7 +3,7 @@ package base.web;
 /**
  * Created by matvii on 10.04.17.
  */
-import base.web.selectors.*;
+import base.web.extractors.*;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 

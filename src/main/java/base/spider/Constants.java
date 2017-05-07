@@ -12,4 +12,6 @@ public class Constants {
     public static final int PDF_LINK_PRIORITY = 10;
     public static final int NON_PDF_LINK_PRIORITY = 1;
 
+    public static final String PDF_LINK_PATTERN = "([^\\s]+(\\.(?i)(pdf))$)";
+
 }

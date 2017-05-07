@@ -5,6 +5,8 @@ import base.web.Page;
 import base.web.Site;
 
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Created by matvii on 07.05.17.
@@ -24,10 +26,11 @@ public class ResearchPageProcessor implements IPageProcessor {
             site.setCharset(header[1]);
         }
 
-        // higher priority to .pdf links, since they most likely contain the papers themselves
+          // higher priority to .pdf links, since they most likely contain the papers themselves
         page.addTargetRequests(page.getHtml().links().regex("https://.*\\.pdf").all(), 10);
         page.addTargetRequests(page.getHtml().links().regex("http://.*\\.pdf").all(), 10);
-        for (String link : page.getHtml().links().all()) {
+        for (String link : page.getHtml().links()
+                .regex("^(https?:\\/\\/)?www\\.([\\da-z\\.-]+)\\.([a-z\\.]{2,6})\\/[\\w \\.-]+?\\.pdf$").all()) {
             System.out.println(link);
         }
         //System.out.println("");

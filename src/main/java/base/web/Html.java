@@ -3,8 +3,8 @@ package base.web;
 /**
  * Created by matvii on 10.04.17.
  */
-import base.web.selectors.ElementExtractor;
-import base.web.selectors.Extractor;
+import base.web.extractors.ElementExtractor;
+import base.web.extractors.Extractor;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;

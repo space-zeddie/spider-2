@@ -3,9 +3,9 @@ package base.web;
 /**
  * Created by matvii on 21.04.17.
  */
-import base.web.selectors.JsonPathExtractor;
-import base.web.selectors.PlainText;
-import base.web.selectors.Extractable;
+import base.web.extractors.JsonPathExtractor;
+import base.web.extractors.PlainText;
+import base.web.extractors.Extractable;
 import com.alibaba.fastjson.JSON;
 import us.codecraft.xsoup.XTokenQueue;
 
