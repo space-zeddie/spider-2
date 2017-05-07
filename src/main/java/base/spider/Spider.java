@@ -5,6 +5,7 @@ package base.spider;
  */
 
 import base.PageProcessor;
+import base.Task;
 import base.output.ConsoleOutput;
 import base.output.Output;
 import base.utils.UrlUtils;
