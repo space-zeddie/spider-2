@@ -23,19 +23,9 @@ public class ResearchPageProcessor implements IPageProcessor {
     public void process(Page page) {
         String[] header = page.getHeaders().get("Content-Type").get(0).split(";charset=");
         if (header.length > 1) {
-            //System.out.println(header[1]);
             site.setCharset(header[1]);
         }
-
-          // higher priority to .pdf links, since they most likely contain the papers themselves
         page.addTargetRequests(page.getHtml().links().regex(Constants.PDF_LINK_PATTERN).all(), 10);
-        /*for (String link : page.getHtml().links()
-                .regex(Constants.PDF_LINK_PATTERN).all()) {
-            System.out.println(link);
-        }*/
-        //System.out.println(page.getUrl().regex(Constants.PDF_LINK_PATTERN).toString());
-        // TO DO: non-pdf linksg
-
         page.putField("paper_link", page.getUrl().regex(Constants.PDF_LINK_PATTERN).toString());
         Extractable regex_url = page.getUrl().regex(Constants.PDF_LINK_PATTERN);
         if (regex_url.toString() != null) {
@@ -45,7 +35,6 @@ public class ResearchPageProcessor implements IPageProcessor {
         } else {
             page.putField("paper_name", null);
         }
-        page.putField("links", page.getHtml().links().all());
         if (page.getResultItems().get("paper")==null && page.getResultItems().get("paper_name")==null
                 && ((List<String>)page.getResultItems().get("links")).size()==0)
             page.setSkip(true);
