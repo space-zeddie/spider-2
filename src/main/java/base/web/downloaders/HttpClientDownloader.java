@@ -1,23 +1,24 @@
 package base.web.downloaders;
 
+import base.Task;
+import base.utils.CharsetUtils;
+import base.web.Page;
+import base.web.Request;
+import base.web.Site;
+import base.web.selectors.PlainText;
 import org.apache.commons.io.IOUtils;
 import org.apache.http.HttpResponse;
 import org.apache.http.annotation.ThreadSafe;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.*;
+import org.apache.http.impl.*;
 import org.apache.http.util.EntityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import us.codecraft.webmagic.Page;
-import us.codecraft.webmagic.Request;
-import us.codecraft.webmagic.Site;
-import us.codecraft.webmagic.Task;
-import us.codecraft.webmagic.proxy.Proxy;
-import us.codecraft.webmagic.proxy.ProxyProvider;
-import us.codecraft.webmagic.selector.PlainText;
-import us.codecraft.webmagic.utils.CharsetUtils;
-import us.codecraft.webmagic.utils.HttpClientUtils;
 
+import java.io.Closeable;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.util.HashMap;
@@ -35,7 +36,7 @@ public class HttpClientDownloader extends AbstractDownloader {
 
     private Logger logger = LoggerFactory.getLogger(getClass());
 
-    private final Map<String, CloseableHttpClient> httpClients = new HashMap<String, CloseableHttpClient>();
+    private final Map<String, HttpClient> httpClients = new HashMap<String, HttpClient>();
 
     private HttpClientGenerator httpClientGenerator = new HttpClientGenerator();
 
@@ -58,7 +59,7 @@ public class HttpClientDownloader extends AbstractDownloader {
             return httpClientGenerator.getClient(null);
         }
         String domain = site.getDomain();
-        CloseableHttpClient httpClient = httpClients.get(domain);
+        HttpClientt httpClient = httpClients.get(domain);
         if (httpClient == null) {
             synchronized (this) {
                 httpClient = httpClients.get(domain);
