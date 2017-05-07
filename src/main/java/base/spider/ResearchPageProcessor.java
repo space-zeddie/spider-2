@@ -27,16 +27,15 @@ public class ResearchPageProcessor implements IPageProcessor {
         }
 
           // higher priority to .pdf links, since they most likely contain the papers themselves
-        page.addTargetRequests(page.getHtml().links().regex("https://.*\\.pdf").all(), 10);
-        page.addTargetRequests(page.getHtml().links().regex("http://.*\\.pdf").all(), 10);
-        for (String link : page.getHtml().links()
-                .regex("^(https?:\\/\\/)?www\\.([\\da-z\\.-]+)\\.([a-z\\.]{2,6})\\/[\\w \\.-]+?\\.pdf$").all()) {
+        page.addTargetRequests(page.getHtml().links().regex(Constants.PDF_LINK_PATTERN).all(), 10);
+        /*for (String link : page.getHtml().links()
+                .regex(Constants.PDF_LINK_PATTERN).all()) {
             System.out.println(link);
-        }
-        //System.out.println("");
+        }*/
+        System.out.println(page.getUrl().regex(Constants.PDF_LINK_PATTERN).toString());
         // TO DO: non-pdf linksg
 
-        page.putField("paper", page.getUrl().regex("https://.*\\.pdf").toString());
+        page.putField("paper", page.getUrl().regex(Constants.PDF_LINK_PATTERN).toString());
         page.putField("links", page.getHtml().$("a", "href").all());
         if (page.getResultItems().get("paper")==null || page.getResultItems().get("links")==null
                 || ((List<String>)page.getResultItems().get("links")).size()==0)

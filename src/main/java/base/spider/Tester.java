@@ -14,10 +14,10 @@ public class Tester {
         Matcher m = reg.matcher("http://www.ekmair.ukma.edu.ua/bitstream/handle/123456789/8923/Halkovska_Zastosuvannia_neironnykh_merezh.pdf");
         System.out.println(m.matches());*/
 
-        /*Spider.create(new ResearchPageProcessor())
+        Spider.create(new ResearchPageProcessor())
                 .addUrl("http://nz.ukma.edu.ua/index.php?option=com_content&task=view&id=560&Itemid=47")
                 .thread(5)
-                .run();*/
+                .run();
     }
 
 }
