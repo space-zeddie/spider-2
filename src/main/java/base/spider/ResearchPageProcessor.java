@@ -32,13 +32,13 @@ public class ResearchPageProcessor implements IPageProcessor {
                 .regex(Constants.PDF_LINK_PATTERN).all()) {
             System.out.println(link);
         }*/
-        System.out.println(page.getUrl().regex(Constants.PDF_LINK_PATTERN).toString());
+        //System.out.println(page.getUrl().regex(Constants.PDF_LINK_PATTERN).toString());
         // TO DO: non-pdf linksg
 
         page.putField("paper", page.getUrl().regex(Constants.PDF_LINK_PATTERN).toString());
-        page.putField("links", page.getHtml().$("a", "href").all());
-        if (page.getResultItems().get("paper")==null || page.getResultItems().get("links")==null
-                || ((List<String>)page.getResultItems().get("links")).size()==0)
+        page.putField("links", page.getHtml().links().all());
+        if (page.getResultItems().get("paper")==null && page.getResultItems().get("links")==null
+                && ((List<String>)page.getResultItems().get("links")).size()==0)
             page.setSkip(true);
     }
 
