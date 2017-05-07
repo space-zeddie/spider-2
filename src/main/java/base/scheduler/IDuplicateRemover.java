@@ -7,7 +7,7 @@ import base.web.Request;
 /**
  * Created by matvii on 11.04.17.
  */
-public interface DuplicateRemover {
+public interface IDuplicateRemover {
 
     public boolean isDuplicate(Request request, Task task);
 

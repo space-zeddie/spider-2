@@ -8,8 +8,8 @@ import base.PageProcessor;
 import base.Task;
 import base.output.ConsoleOutput;
 import base.output.Output;
+import base.scheduler.IScheduler;
 import base.scheduler.QueueScheduler;
-import base.scheduler.Scheduler;
 import base.utils.UrlUtils;
 import base.web.Page;
 import base.web.Request;
@@ -33,7 +33,7 @@ import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * Entrance of a crawler.<br>
- * A spider contains four modules: downloader, Scheduler, PageProcessor and
+ * A spider contains four modules: downloader, IScheduler, PageProcessor and
  * Pipeline.<br>
  * Every module is a field of Spider. <br>
  * The modules are defined in interface. <br>
@@ -72,7 +72,7 @@ public class Spider implements Runnable, Task {
 
     protected String uuid;
 
-    protected Scheduler scheduler = new QueueScheduler();
+    protected IScheduler scheduler = new QueueScheduler();
 
     protected Logger logger = LoggerFactory.getLogger(getClass());
 
@@ -171,7 +171,7 @@ public class Spider implements Runnable, Task {
      * set scheduler for Spider
      */
     @Deprecated
-    public Spider scheduler(Scheduler scheduler) {
+    public Spider scheduler(IScheduler scheduler) {
         return setScheduler(scheduler);
     }
 
@@ -180,12 +180,12 @@ public class Spider implements Runnable, Task {
      *
      * @param scheduler scheduler
      * @return this
-     * @see Scheduler
+     * @see IScheduler
      * @since 0.2.1
      */
-    public Spider setScheduler(Scheduler scheduler) {
+    public Spider setScheduler(IScheduler scheduler) {
         checkIfRunning();
-        Scheduler oldScheduler = this.scheduler;
+        IScheduler oldScheduler = this.scheduler;
         this.scheduler = scheduler;
         if (oldScheduler != null) {
             Request request;
@@ -740,7 +740,7 @@ public class Spider implements Runnable, Task {
         return startTime;
     }
 
-    public Scheduler getScheduler() {
+    public IScheduler getScheduler() {
         return scheduler;
     }
 

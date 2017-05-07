@@ -9,17 +9,17 @@ import org.slf4j.LoggerFactory;
 /**
  * Created by matvii on 11.04.17.
  */
-public abstract class DuplicateRemovedScheduler implements Scheduler {
+public abstract class DuplicateRemovedScheduler implements IScheduler {
 
     protected Logger logger = LoggerFactory.getLogger(getClass());
 
-    private DuplicateRemover duplicatedRemover = new HashSetDuplicateRemover();
+    private IDuplicateRemover duplicatedRemover = new HashSetDuplicateRemover();
 
-    public DuplicateRemover getDuplicateRemover() {
+    public IDuplicateRemover getDuplicateRemover() {
         return duplicatedRemover;
     }
 
-    public DuplicateRemovedScheduler setDuplicateRemover(DuplicateRemover duplicatedRemover) {
+    public DuplicateRemovedScheduler setDuplicateRemover(IDuplicateRemover duplicatedRemover) {
         this.duplicatedRemover = duplicatedRemover;
         return this;
     }

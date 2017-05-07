@@ -6,7 +6,7 @@ import base.Task;
 /**
  * Created by matvii on 11.04.17.
  */
-public interface Scheduler {
+public interface IScheduler {
 
     // fetch
     void push(Request request, Task task);
