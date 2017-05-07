@@ -9,4 +9,7 @@ public class Constants {
     public static final int SLEEP_TIME = 1000;
     public static final int TIME_OUT = 10000;
 
+    public static final int PDF_LINK_PRIORITY = 10;
+    public static final int NON_PDF_LINK_PRIORITY = 1;
+
 }
