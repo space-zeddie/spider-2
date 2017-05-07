@@ -111,7 +111,7 @@ public class HttpClientGenerator {
                 }
             });
         }
-        httpClientBuilder.setRedirectStrategy(new CustomRedirectStrategy());
+        httpClientBuilder.setRedirectStrategy(new MyRedirectStrategy());
 
         SocketConfig.Builder socketConfigBuilder = SocketConfig.custom();
         socketConfigBuilder.setSoKeepAlive(true).setTcpNoDelay(true);
