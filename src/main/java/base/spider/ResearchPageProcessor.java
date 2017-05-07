@@ -3,6 +3,7 @@ package base.spider;
 import base.IPageProcessor;
 import base.web.Page;
 import base.web.Site;
+import base.web.extractors.Extractable;
 
 import java.util.List;
 import java.util.regex.Matcher;
@@ -34,8 +35,15 @@ public class ResearchPageProcessor implements IPageProcessor {
         }*/
         //System.out.println(page.getUrl().regex(Constants.PDF_LINK_PATTERN).toString());
         // TO DO: non-pdf linksg
+        Extractable regex_url = page.getUrl().regex(Constants.PDF_LINK_PATTERN);
+        if (regex_url.toString() != null) {
+            String[] parts = (regex_url.toString().split("/"));
+            System.err.println(parts[parts.length - 1]);
+        }
 
-        page.putField("paper", page.getUrl().regex(Constants.PDF_LINK_PATTERN).toString());
+        page.putField("paper_link", page.getUrl().regex(Constants.PDF_LINK_PATTERN).toString());
+       // page.putField("paper_name", page.getUrl().regex(Constants.PDF_LINK_PATTERN).toString()
+                //.split("/.*\\.pdf"));
         page.putField("links", page.getHtml().links().all());
         if (page.getResultItems().get("paper")==null && page.getResultItems().get("links")==null
                 && ((List<String>)page.getResultItems().get("links")).size()==0)
