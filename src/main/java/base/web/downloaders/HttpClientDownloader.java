@@ -11,12 +11,12 @@ import base.web.selectors.PlainText;
 import org.apache.commons.io.IOUtils;
 import org.apache.http.HttpResponse;
 import org.apache.http.annotation.ThreadSafe;
-//import org.apache.http.client.methods.CloseableHttpResponse;
-//import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.*;
 import org.apache.http.impl.*;
-import org.apache.http.util.EntityUtils;
+import org.apache.http.util.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -38,12 +38,12 @@ public class HttpClientDownloader extends AbstractDownloader {
 
     private Logger logger = LoggerFactory.getLogger(getClass());
 
-    private final Map<String, HttpClient> httpClients = new HashMap<String, HttpClient>();
+    private final Map<String, CloseableHttpClient> httpClients = new HashMap<String, CloseableHttpClient>();
 
     private HttpClientGenerator httpClientGenerator = new HttpClientGenerator();
 
     private HttpUriRequestConverter httpUriRequestConverter = new HttpUriRequestConverter();
-    
+
     private ProxyProvider proxyProvider;
 
     private boolean responseHeader = true;
@@ -56,13 +56,12 @@ public class HttpClientDownloader extends AbstractDownloader {
         this.proxyProvider = proxyProvider;
     }
 
-    private HttpClient getHttpClient(Site site) {
+    private CloseableHttpClient getHttpClient(Site site) {
         if (site == null) {
-            return httpClients.get(null);
-            //return httpClientGenerator.getClient(null);
+            return httpClientGenerator.getClient(null);
         }
         String domain = site.getDomain();
-        HttpClient httpClient = httpClients.get(domain);
+        CloseableHttpClient httpClient = httpClients.get(domain);
         if (httpClient == null) {
             synchronized (this) {
                 httpClient = httpClients.get(domain);
@@ -81,8 +80,8 @@ public class HttpClientDownloader extends AbstractDownloader {
             throw new NullPointerException("task or site can not be null");
         }
         logger.debug("downloading page {}", request.getUrl());
-        HttpResponse httpResponse = null;
-        HttpClient httpClient = getHttpClient(task.getSite());
+        CloseableHttpResponse httpResponse = null;
+        CloseableHttpClient httpClient = getHttpClient(task.getSite());
         Proxy proxy = proxyProvider != null ? proxyProvider.getProxy(task) : null;
         HttpClientRequestContext requestContext = httpUriRequestConverter.convert(request, task.getSite(), proxy);
         Page page = Page.fail();
