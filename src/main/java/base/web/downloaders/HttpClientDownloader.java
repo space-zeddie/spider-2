@@ -27,12 +27,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-/**
- * The http downloader based on HttpClient.
- *
- * @author code4crafter@gmail.com <br>
- * @since 0.1.0
- */
 public class HttpClientDownloader extends AbstractDownloader {
 
     private Logger logger = LoggerFactory.getLogger(getClass());

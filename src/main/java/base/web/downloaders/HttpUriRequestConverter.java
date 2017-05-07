@@ -1,6 +1,6 @@
 package base.web.downloaders;
 
-import base.Proxy;
+import base.proxy.Proxy;
 import base.utils.HTTPConsts;
 import base.utils.UrlUtils;
 import base.web.Request;

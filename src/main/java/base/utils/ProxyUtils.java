@@ -1,6 +1,6 @@
 package base.utils;
 
-import base.Proxy;
+import base.proxy.Proxy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

@@ -12,6 +12,7 @@ import base.utils.UrlUtils;
 import base.web.Page;
 import base.web.Request;
 import base.web.Site;
+import base.web.downloaders.HttpClientDownloader;
 import base.web.downloaders.IDownloader;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.SerializationUtils;
