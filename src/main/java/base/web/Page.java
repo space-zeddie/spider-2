@@ -30,8 +30,6 @@ public class Page {
 
     private Html html;
 
-    private Json json;
-
     private String rawText;
 
     private Extractable url;
@@ -79,19 +77,6 @@ public class Page {
             html = new Html(rawText, request.getUrl());
         }
         return html;
-    }
-
-    /**
-     * get json content of page
-     *
-     * @return json
-     * @since 0.5.0
-     */
-    public Json getJson() {
-        if (json == null) {
-            json = new Json(rawText);
-        }
-        return json;
     }
 
     /**
@@ -230,7 +215,6 @@ public class Page {
                 "request=" + request +
                 ", resultItems=" + resultItems +
                 ", html=" + html +
-                ", json=" + json +
                 ", rawText='" + rawText + '\'' +
                 ", url=" + url +
                 ", headers=" + headers +
