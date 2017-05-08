@@ -11,17 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Object storing extracted result and urls to fetch.<br>
- * Not thread safe.<br>
- * Main method：                                               <br>
- * {@link #getUrl()} get url of current page                   <br>
- * {@link #getHtml()}  get content of current page                 <br>
- * {@link #putField(String, Object)}  save extracted result            <br>
- * {@link #getResultItems()} get extract results to be used in IOutput<br>
- * {@link #addTargetRequests(java.util.List)} {@link #addTargetRequest(String)} add urls to fetch                 <br>
- *
- */
 public class Page {
 
     private Request request;
@@ -57,21 +46,12 @@ public class Page {
 
     }
 
-    /**
-     * store extract results
-     *
-     * @param key key
-     * @param field field
-     */
+
+    // store extract results
     public void putField(String key, Object field) {
         resultItems.put(key, field);
     }
 
-    /**
-     * get html content of page
-     *
-     * @return html
-     */
     public Html getHtml() {
         if (html == null) {
             html = new Html(rawText, request.getUrl());
@@ -79,11 +59,7 @@ public class Page {
         return html;
     }
 
-    /**
-     * @param html html
-     * @deprecated since 0.4.0
-     * The html is parse just when first time of calling {@link #getHtml()}, so use {@link #setRawText(String)} instead.
-     */
+
     public void setHtml(Html html) {
         this.html = html;
     }
@@ -92,11 +68,6 @@ public class Page {
         return targetRequests;
     }
 
-    /**
-     * add urls to fetch
-     *
-     * @param requests requests
-     */
     public void addTargetRequests(List<String> requests) {
         for (String s : requests) {
             if (StringUtils.isBlank(s) || s.equals("#") || s.startsWith("javascript:")) {
@@ -107,12 +78,6 @@ public class Page {
         }
     }
 
-    /**
-     * add urls to fetch
-     *
-     * @param requests requests
-     * @param priority priority
-     */
     public void addTargetRequests(List<String> requests, long priority) {
         for (String s : requests) {
             if (StringUtils.isBlank(s) || s.equals("#") || s.startsWith("javascript:")) {
@@ -123,11 +88,6 @@ public class Page {
         }
     }
 
-    /**
-     * add url to fetch
-     *
-     * @param requestString requestString
-     */
     public void addTargetRequest(String requestString) {
         if (StringUtils.isBlank(requestString) || requestString.equals("#")) {
             return;
@@ -136,20 +96,10 @@ public class Page {
         targetRequests.add(new Request(requestString));
     }
 
-    /**
-     * add requests to fetch
-     *
-     * @param request request
-     */
     public void addTargetRequest(Request request) {
         targetRequests.add(request);
     }
 
-    /**
-     * get url of current page
-     *
-     * @return url of current page
-     */
     public Extractable getUrl() {
         return url;
     }
@@ -158,11 +108,6 @@ public class Page {
         this.url = url;
     }
 
-    /**
-     * get request of current page
-     *
-     * @return request
-     */
     public Request getRequest() {
         return request;
     }
