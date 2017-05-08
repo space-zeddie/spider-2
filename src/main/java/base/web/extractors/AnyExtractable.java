@@ -8,10 +8,6 @@ import org.apache.commons.collections.CollectionUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * @author code4crafer@gmail.com
- * @since 0.5.2
- */
 public abstract class AnyExtractable implements Extractable {
 
     protected abstract List<String> getSourceTexts();

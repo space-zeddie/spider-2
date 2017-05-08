@@ -7,7 +7,7 @@ import base.web.Site;
  */
 public interface Task {
 
-    String getUUID();
+    String getId();
 
     Site getSite();
 

@@ -6,10 +6,6 @@ package base.web.extractors;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * All extractors will be arranged as a output. <br>
- * The next selector uses the result of the previous as source.
- */
 public class AndExtractor implements Extractor {
 
     private List<Extractor> extractors = new ArrayList<Extractor>();

@@ -25,20 +25,6 @@ public class Extractors {
         return new CssExtractor(expr, attrName);
     }
 
-    public static XpathExtractor xpath(String expr) {
-        return new XpathExtractor(expr);
-    }
-
-    /**
-     * @see #xpath(String)
-     * @param expr expr
-     * @return new selector
-     */
-    @Deprecated
-    public static XpathExtractor xsoup(String expr) {
-        return new XpathExtractor(expr);
-    }
-
     public static AndExtractor and(Extractor... extractors) {
         return new AndExtractor(extractors);
     }

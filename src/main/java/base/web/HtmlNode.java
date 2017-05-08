@@ -39,12 +39,6 @@ public class HtmlNode extends AnyExtractable {
     }
 
     @Override
-    public Extractable xpath(String xpath) {
-        XpathExtractor xpathSelector = Extractors.xpath(xpath);
-        return extractElements(xpathSelector);
-    }
-
-    @Override
     public Extractable selectList(Extractor extractor) {
         if (extractor instanceof BasicElementExtractor) {
             return extractElements((BasicElementExtractor) extractor);

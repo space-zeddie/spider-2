@@ -309,7 +309,7 @@ public class Site {
     public Task toTask() {
         return new Task() {
             @Override
-            public String getUUID() {
+            public String getId() {
                 String uuid = Site.this.getDomain();
                 if (uuid == null) {
                     uuid = UUID.randomUUID().toString();

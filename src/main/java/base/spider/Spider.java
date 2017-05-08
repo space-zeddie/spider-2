@@ -252,7 +252,7 @@ public class Spider implements Runnable, Task {
     public void run() {
         checkRunningStat();
         initComponent();
-        logger.info("Spider " + getUUID() + " started!");
+        logger.info("Spider " + getId() + " started!");
         while (!Thread.currentThread().isInterrupted() && stat.get() == STAT_RUNNING) {
             final Request request = scheduler.poll(this);
             if (request == null) {
@@ -521,9 +521,9 @@ public class Spider implements Runnable, Task {
 
     public void stop() {
         if (stat.compareAndSet(STAT_RUNNING, STAT_STOPPED)) {
-            logger.info("Spider " + getUUID() + " stop success!");
+            logger.info("Spider " + getId() + " stop success!");
         } else {
-            logger.info("Spider " + getUUID() + " stop fail!");
+            logger.info("Spider " + getId() + " stop fail!");
         }
     }
 
@@ -654,7 +654,7 @@ public class Spider implements Runnable, Task {
     }
 
     @Override
-    public String getUUID() {
+    public String getId() {
         if (uuid != null) {
             return uuid;
         }
