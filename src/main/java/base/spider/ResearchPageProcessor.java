@@ -5,6 +5,7 @@ import base.web.Page;
 import base.web.Site;
 import base.web.extractors.Extractable;
 
+import java.util.Date;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -35,6 +36,8 @@ public class ResearchPageProcessor implements IPageProcessor {
         } else {
             page.putField("paper_name", null);
         }
+        Date date = new Date();
+        page.putField("retrieval_date", date.toString());
         if (page.getResultItems().get("paper")==null && page.getResultItems().get("paper_name")==null
                 )
             page.setSkip(true);
