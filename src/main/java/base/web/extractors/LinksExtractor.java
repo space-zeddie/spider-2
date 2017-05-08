@@ -10,9 +10,6 @@ import org.jsoup.select.Elements;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Links selector based on jsoup. Use absolute url.
- */
 public class LinksExtractor extends BasicElementExtractor {
 
     @Override

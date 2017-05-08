@@ -7,13 +7,6 @@ package base.web.extractors;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Extractable plain text.<br>
- * Can not be selected by XPath or CSS Extractor.
- *
- * @author code4crafter@gmail.com <br>
- * @since 0.1.0
- */
 public class PlainText extends AnyExtractable {
 
     protected List<String> sourceTexts;

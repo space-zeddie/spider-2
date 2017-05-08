@@ -6,10 +6,6 @@ package base.web.extractors;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * All extractors will do extracting separately, <br>
- * and the results of extractors will combined as the final result.
- */
 public class OrExtractor implements Extractor {
 
     private List<Extractor> extractors = new ArrayList<Extractor>();
