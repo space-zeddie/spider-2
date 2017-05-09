@@ -23,7 +23,6 @@ public class FileOutput extends FileUtils implements IOutput {
     public FileOutput() {
         setPath("/home/matvii/Jun-KMA/");
     }
-
     public FileOutput(String path) {
         setPath(path);
     }
