@@ -32,15 +32,13 @@ public class ResearchPageProcessor implements IPageProcessor {
         IExtractable regex_url = page.getUrl().regex(SpiderConstants.PDF_LINK_PATTERN);
         if (regex_url.toString() != null) {
             String[] parts = (regex_url.toString().split("/"));
-            //System.err.println(parts[parts.length - 1]);
-            page.putField("paper_name", parts[parts.length - 1]);
+            page.putField("file_name", parts[parts.length - 1]);
         } else {
-            page.putField("paper_name", null);
+            page.putField("file_name", null);
         }
         Date date = new Date();
         page.putField("retrieval_date", date.toString());
-        if (page.getResultItems().get("paper")==null && page.getResultItems().get("paper_name")==null
-                )
+        if (page.getResultItems().get("paper")==null && page.getResultItems().get("file_name")==null)
             page.setSkip(true);
     }
 
