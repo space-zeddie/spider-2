@@ -1,5 +1,9 @@
 package base.proxy;
 
+/**
+ * Created by matvii on 07.05.17.
+ */
+
 import base.Task;
 import base.web.Page;
 
@@ -29,15 +33,15 @@ public class SimpleProxyProvider implements IProxyProvider {
 
     @Override
     public void returnProxy(Proxy proxy, Page page, Task task) {
-        //Donothing
+        //TODO??
     }
 
     @Override
     public Proxy getProxy(Task task) {
-        return proxies.get(incrForLoop());
+        return proxies.get(increaseForLoop());
     }
 
-    private int incrForLoop() {
+    private int increaseForLoop() {
         int p = pointer.incrementAndGet();
         int size = proxies.size();
         if (p < size) {
