@@ -12,16 +12,6 @@ public abstract class AnyExtractable implements Extractable {
 
     protected abstract List<String> getSourceTexts();
 
-    @Override
-    public Extractable css(String extractor) {
-        return $(extractor);
-    }
-
-    @Override
-    public Extractable css(String extractor, String attrName) {
-        return $(extractor, attrName);
-    }
-
     protected Extractable select(Extractor extractor, List<String> strings) {
         List<String> results = new ArrayList<String>();
         for (String string : strings) {
@@ -45,11 +35,6 @@ public abstract class AnyExtractable implements Extractable {
     @Override
     public List<String> all() {
         return getSourceTexts();
-    }
-
-    @Override
-    public Extractable jsonPath(String jsonPath) {
-        throw new UnsupportedOperationException();
     }
 
     @Override

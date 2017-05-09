@@ -25,18 +25,13 @@ public class PlainText extends AnyExtractable {
     }
 
     @Override
-    public Extractable $(String selector) {
+    public Extractable css(String selector) {
         throw new UnsupportedOperationException("$ can not apply to plain text. Please check whether you use a previous xpath with attribute extract (/@href etc).");
     }
 
     @Override
-    public Extractable $(String selector, String attrName) {
+    public Extractable css(String selector, String attrName) {
         throw new UnsupportedOperationException("$ can not apply to plain text. Please check whether you use a previous xpath with attribute extract (/@href etc).");
-    }
-
-    @Override
-    public Extractable smartContent() {
-        throw new UnsupportedOperationException("Smart content can not apply to plain text. Please check whether you use a previous xpath with attribute extract (/@href etc).");
     }
 
     @Override

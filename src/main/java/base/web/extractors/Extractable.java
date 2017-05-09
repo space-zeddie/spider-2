@@ -8,15 +8,9 @@ import java.util.List;
 
 public interface Extractable {
 
-    Extractable $(String selector);
-
-    Extractable $(String selector, String attrName);
-
     Extractable css(String selector);
 
     Extractable css(String selector, String attrName);
-
-    Extractable smartContent();
 
     Extractable links();
 
@@ -33,8 +27,6 @@ public interface Extractable {
     boolean match();
 
     List<String> all();
-
-    Extractable jsonPath(String jsonPath);
 
     Extractable extract(Extractor extractor);
 

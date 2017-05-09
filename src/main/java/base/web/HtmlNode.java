@@ -94,13 +94,13 @@ public class HtmlNode extends AnyExtractable {
     }
 
     @Override
-    public Extractable $(String selector) {
+    public Extractable css(String selector) {
         CssExtractor cssSelector = Extractors.$(selector);
         return extractElements(cssSelector);
     }
 
     @Override
-    public Extractable $(String selector, String attrName) {
+    public Extractable css(String selector, String attrName) {
         CssExtractor cssSelector = Extractors.$(selector, attrName);
         return extractElements(cssSelector);
     }
