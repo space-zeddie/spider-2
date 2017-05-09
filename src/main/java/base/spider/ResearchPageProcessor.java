@@ -5,6 +5,8 @@ package base.spider;
  */
 
 import base.IPageProcessor;
+import base.reader.IReader;
+import base.reader.JsonFileReader;
 import base.utils.UrlUtils;
 import base.web.Page;
 import base.web.Site;
@@ -22,6 +24,8 @@ public class ResearchPageProcessor implements IPageProcessor {
             .setRetryTimes(SpiderConstants.RETRY_TIMES)
             .setSleepTime(SpiderConstants.SLEEP_TIME)
             .setTimeOut(SpiderConstants.TIME_OUT);
+
+    private IReader reader = new JsonFileReader();
 
     @Override
     public void process(Page page) {
