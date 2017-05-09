@@ -26,17 +26,17 @@ public class PlainText extends AnyExtractable {
 
     @Override
     public Extractable css(String selector) {
-        throw new UnsupportedOperationException("$ can not apply to plain text. Please check whether you use a previous xpath with attribute extract (/@href etc).");
+        throw new UnsupportedOperationException();
     }
 
     @Override
     public Extractable css(String selector, String attrName) {
-        throw new UnsupportedOperationException("$ can not apply to plain text. Please check whether you use a previous xpath with attribute extract (/@href etc).");
+        throw new UnsupportedOperationException();
     }
 
     @Override
     public Extractable links() {
-        throw new UnsupportedOperationException("Links can not apply to plain text. Please check whether you use a previous xpath with attribute extract (/@href etc).");
+        throw new UnsupportedOperationException();
     }
 
     @Override
