@@ -1,24 +1,22 @@
 package base.scheduler;
 
+/**
+ * Created by matvii on 11.04.17.
+ */
+
 import base.Task;
 import base.utils.HTTPConsts;
 import base.web.Request;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-/**
- * Created by matvii on 11.04.17.
- */
 public abstract class DuplicateRemovedScheduler implements IScheduler {
 
     protected Logger logger = LoggerFactory.getLogger(getClass());
-
     private IDuplicateRemover duplicatedRemover = new HashSetDuplicateRemover();
-
     public IDuplicateRemover getDuplicateRemover() {
         return duplicatedRemover;
     }
-
     public DuplicateRemovedScheduler setDuplicateRemover(IDuplicateRemover duplicatedRemover) {
         this.duplicatedRemover = duplicatedRemover;
         return this;

@@ -1,18 +1,23 @@
 package base.spider;
 
+/**
+ * Created by matvii on 07.05.17.
+ */
+
 import base.IPageProcessor;
 import base.utils.CharsetUtils;
 import base.utils.UrlUtils;
 import base.web.Page;
 import base.web.Site;
 import base.web.extractors.IExtractable;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Date;
 
-/**
- * Created by matvii on 07.05.17.
- */
 public class ResearchPageProcessor implements IPageProcessor {
+
+    protected Logger logger = LoggerFactory.getLogger(getClass());
 
     private Site site = Site.instance()
             .setRetryTimes(Constants.RETRY_TIMES)
