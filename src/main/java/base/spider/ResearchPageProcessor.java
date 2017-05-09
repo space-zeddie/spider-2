@@ -1,6 +1,7 @@
 package base.spider;
 
 import base.IPageProcessor;
+import base.utils.CharsetUtils;
 import base.utils.UrlUtils;
 import base.web.Page;
 import base.web.Site;

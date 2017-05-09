@@ -9,10 +9,5 @@ import java.util.List;
  */
 public interface ICollectOutput<T> extends IOutput {
 
-    /**
-     * Get all results collected.
-     *
-     * @return collected results
-     */
     List<T> getCollected();
 }
