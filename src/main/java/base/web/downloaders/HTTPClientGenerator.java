@@ -95,18 +95,7 @@ public class HTTPClientGenerator {
         } else {
             httpClientBuilder.setUserAgent("");
         }
-        if (site.isUseGzip()) {
-            httpClientBuilder.addInterceptorFirst(new HttpRequestInterceptor() {
-
-                public void process(
-                        final HttpRequest request,
-                        final HttpContext context) throws HttpException, IOException {
-                    if (!request.containsHeader("Accept-Encoding")) {
-                        request.addHeader("Accept-Encoding", "gzip");
-                    }
-                }
-            });
-        }
+        
         httpClientBuilder.setRedirectStrategy(new MyRedirectStrategy());
 
         SocketConfig.Builder socketConfigBuilder = SocketConfig.custom();
