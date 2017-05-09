@@ -11,6 +11,8 @@ import base.output.ConsoleOutput;
 import base.output.ICollectOutput;
 import base.output.IOutput;
 import base.output.ResultItemsCollectOutput;
+import base.reader.IReader;
+import base.reader.JsonFileReader;
 import base.scheduler.IScheduler;
 import base.scheduler.QueueScheduler;
 import base.utils.UrlUtils;
@@ -38,6 +40,7 @@ public class Spider implements Runnable, Task {
 
     protected IDownloader downloader;
     protected List<IOutput> pipelines = new ArrayList<IOutput>();
+    protected IReader reader = new JsonFileReader();
     protected IPageProcessor pageProcessor;
     protected List<Request> startRequests;
     protected Site site;
