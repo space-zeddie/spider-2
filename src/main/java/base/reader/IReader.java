@@ -12,7 +12,7 @@ import java.io.File;
 
 public interface IReader {
 
-    void processFile(File file);
+    void loadFromPath(String path);
 
     ResultItems getSavedItems();
 

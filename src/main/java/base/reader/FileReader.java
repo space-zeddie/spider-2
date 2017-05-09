@@ -21,7 +21,7 @@ public class FileReader implements IReader {
     public FileReader() {}
 
     @Override
-    public void processFile(File file) {
+    public void loadFromPath(String path) {
 
     }
 
