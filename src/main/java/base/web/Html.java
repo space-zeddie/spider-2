@@ -15,26 +15,15 @@ import org.slf4j.LoggerFactory;
 import java.util.Collections;
 import java.util.List;
 
-/**
- * IExtractable html.<br>
- *
- * @author code4crafter@gmail.com <br>
- * @since 0.1.0
- */
 public class Html extends HtmlNode {
 
-    private Logger logger = LoggerFactory.getLogger(getClass());
-
     private static volatile boolean INITED = false;
-
-    /**
-     * Disable jsoup html entity escape. It can be set just before any Html instance is created.
-     */
     public static boolean DISABLE_HTML_ENTITY_ESCAPE = false;
 
-    /**
-     * Disable jsoup html entity escape. It is a hack way only for jsoup 1.7.2.
-     */
+    private Document document;
+    private Logger logger = LoggerFactory.getLogger(getClass());
+
+
     private void disableJsoupHtmlEntityEscape() {
         if (DISABLE_HTML_ENTITY_ESCAPE && !INITED) {
             Entities.EscapeMode.base.getMap().clear();
@@ -43,11 +32,6 @@ public class Html extends HtmlNode {
             INITED = true;
         }
     }
-
-    /**
-     * Store parsed document for better performance when only one text exist.
-     */
-    private Document document;
 
     public Html(String text, String url) {
         try {
