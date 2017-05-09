@@ -1,6 +1,5 @@
 package base.spider;
 
-import base.output.FileOutput;
 import base.output.JsonFileOutput;
 
 import java.util.regex.Matcher;
