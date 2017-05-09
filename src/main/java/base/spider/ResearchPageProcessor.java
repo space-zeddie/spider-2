@@ -3,12 +3,9 @@ package base.spider;
 import base.IPageProcessor;
 import base.web.Page;
 import base.web.Site;
-import base.web.extractors.Extractable;
+import base.web.extractors.IExtractable;
 
 import java.util.Date;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 /**
  * Created by matvii on 07.05.17.
@@ -28,7 +25,7 @@ public class ResearchPageProcessor implements IPageProcessor {
         }
         page.addTargetRequests(page.getHtml().links().regex(Constants.PDF_LINK_PATTERN).all(), 10);
         page.putField("paper_link", page.getUrl().regex(Constants.PDF_LINK_PATTERN).toString());
-        Extractable regex_url = page.getUrl().regex(Constants.PDF_LINK_PATTERN);
+        IExtractable regex_url = page.getUrl().regex(Constants.PDF_LINK_PATTERN);
         if (regex_url.toString() != null) {
             String[] parts = (regex_url.toString().split("/"));
             //System.err.println(parts[parts.length - 1]);

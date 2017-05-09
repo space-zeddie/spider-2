@@ -5,7 +5,7 @@ package base.web.extractors;
  */
 import java.util.List;
 
-public interface Extractor {
+public interface IExtractor {
 
     String select(String text);
 

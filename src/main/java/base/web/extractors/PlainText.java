@@ -25,23 +25,23 @@ public class PlainText extends AnyExtractable {
     }
 
     @Override
-    public Extractable css(String selector) {
+    public IExtractable css(String selector) {
         throw new UnsupportedOperationException();
     }
 
     @Override
-    public Extractable css(String selector, String attrName) {
+    public IExtractable css(String selector, String attrName) {
         throw new UnsupportedOperationException();
     }
 
     @Override
-    public Extractable links() {
+    public IExtractable links() {
         throw new UnsupportedOperationException();
     }
 
     @Override
-    public List<Extractable> nodes() {
-        List<Extractable> nodes = new ArrayList<Extractable>(getSourceTexts().size());
+    public List<IExtractable> nodes() {
+        List<IExtractable> nodes = new ArrayList<IExtractable>(getSourceTexts().size());
         for (String string : getSourceTexts()) {
             nodes.add(PlainText.create(string));
         }

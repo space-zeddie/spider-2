@@ -28,12 +28,12 @@ public class HtmlNode extends AnyExtractable {
     }
 
     @Override
-    public Extractable links() {
+    public IExtractable links() {
         return extractElements(new LinksExtractor());
     }
 
     @Override
-    public Extractable selectList(Extractor extractor) {
+    public IExtractable selectList(IExtractor extractor) {
         if (extractor instanceof BasicElementExtractor) {
             return extractElements((BasicElementExtractor) extractor);
         }
@@ -41,7 +41,7 @@ public class HtmlNode extends AnyExtractable {
     }
 
     @Override
-    public Extractable extract(Extractor extractor) {
+    public IExtractable extract(IExtractor extractor) {
         return selectList(extractor);
     }
 
@@ -51,7 +51,7 @@ public class HtmlNode extends AnyExtractable {
      * @param elementSelector elementSelector
      * @return result
      */
-    protected Extractable extractElements(BasicElementExtractor elementSelector) {
+    protected IExtractable extractElements(BasicElementExtractor elementSelector) {
         ListIterator<Element> elementIterator = getElements().listIterator();
         if (!elementSelector.hasAttribute()) {
             List<Element> resultElements = new ArrayList<Element>();
@@ -94,20 +94,20 @@ public class HtmlNode extends AnyExtractable {
     }
 
     @Override
-    public Extractable css(String selector) {
+    public IExtractable css(String selector) {
         CssExtractor cssSelector = Extractors.$(selector);
         return extractElements(cssSelector);
     }
 
     @Override
-    public Extractable css(String selector, String attrName) {
+    public IExtractable css(String selector, String attrName) {
         CssExtractor cssSelector = Extractors.$(selector, attrName);
         return extractElements(cssSelector);
     }
 
     @Override
-    public List<Extractable> nodes() {
-        List<Extractable> extractables = new ArrayList<Extractable>();
+    public List<IExtractable> nodes() {
+        List<IExtractable> extractables = new ArrayList<IExtractable>();
         for (Element element : getElements()) {
             List<Element> childElements = new ArrayList<Element>(1);
             childElements.add(element);

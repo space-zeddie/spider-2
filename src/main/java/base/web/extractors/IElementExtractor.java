@@ -7,7 +7,7 @@ import org.jsoup.nodes.Element;
 
 import java.util.List;
 
-public interface ElementExtractor {
+public interface IElementExtractor {
 
     String select(Element element);
 

@@ -11,7 +11,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
 
-public class RegexExtractor implements Extractor {
+public class RegexExtractor implements IExtractor {
 
     private String regexStr;
 

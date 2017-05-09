@@ -8,11 +8,11 @@ import org.apache.commons.collections.CollectionUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class AnyExtractable implements Extractable {
+public abstract class AnyExtractable implements IExtractable {
 
     protected abstract List<String> getSourceTexts();
 
-    protected Extractable select(Extractor extractor, List<String> strings) {
+    protected IExtractable select(IExtractor extractor, List<String> strings) {
         List<String> results = new ArrayList<String>();
         for (String string : strings) {
             String result = extractor.select(string);
@@ -23,7 +23,7 @@ public abstract class AnyExtractable implements Extractable {
         return new PlainText(results);
     }
 
-    protected Extractable selectList(Extractor extractor, List<String> strings) {
+    protected IExtractable selectList(IExtractor extractor, List<String> strings) {
         List<String> results = new ArrayList<String>();
         for (String string : strings) {
             List<String> result = extractor.selectList(string);
@@ -47,29 +47,29 @@ public abstract class AnyExtractable implements Extractable {
     }
 
     @Override
-    public Extractable extract(Extractor extractor) {
+    public IExtractable extract(IExtractor extractor) {
         return select(extractor, getSourceTexts());
     }
 
     @Override
-    public Extractable selectList(Extractor extractor) {
+    public IExtractable selectList(IExtractor extractor) {
         return selectList(extractor, getSourceTexts());
     }
 
     @Override
-    public Extractable regex(String regex) {
+    public IExtractable regex(String regex) {
         RegexExtractor regexExtractor = Extractors.regex(regex);
         return selectList(regexExtractor, getSourceTexts());
     }
 
     @Override
-    public Extractable regex(String regex, int group) {
+    public IExtractable regex(String regex, int group) {
         RegexExtractor regexExtractor = Extractors.regex(regex, group);
         return selectList(regexExtractor, getSourceTexts());
     }
 
     @Override
-    public Extractable replace(String regex, String replacement) {
+    public IExtractable replace(String regex, String replacement) {
         ReplaceSelector replaceSelector = new ReplaceSelector(regex,replacement);
         return select(replaceSelector, getSourceTexts());
     }

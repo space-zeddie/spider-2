@@ -3,7 +3,7 @@ package base.web; /**
  */
 import base.ResultItems;
 import base.utils.UrlUtils;
-import base.web.extractors.Extractable;
+import base.web.extractors.IExtractable;
 import org.apache.commons.lang3.StringUtils;
 import base.utils.HTTPConsts;
 
@@ -21,7 +21,7 @@ public class Page {
 
     private String rawText;
 
-    private Extractable url;
+    private IExtractable url;
 
     private Map<String,List<String>> headers;
 
@@ -100,11 +100,11 @@ public class Page {
         targetRequests.add(request);
     }
 
-    public Extractable getUrl() {
+    public IExtractable getUrl() {
         return url;
     }
 
-    public void setUrl(Extractable url) {
+    public void setUrl(IExtractable url) {
         this.url = url;
     }
 
