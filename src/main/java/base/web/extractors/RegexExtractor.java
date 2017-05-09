@@ -21,11 +21,9 @@ public class RegexExtractor implements Extractor {
 
     public RegexExtractor(String regexStr, int group) {
         if (StringUtils.isBlank(regexStr)) {
-            throw new IllegalArgumentException("regex must not be empty");
+            throw new IllegalArgumentException("empty regex");
         }
-        // Check bracket for regex group. Add default group 1 if there is no group.
-        // Only check if there exists the valid left parenthesis, leave regexp validation for Pattern.
-        if ( ! hasGroup(regexStr) ){
+        if (!hasGroup(regexStr)) {
             regexStr = "(" + regexStr + ")";
         }
         this.regexStr = regexStr;

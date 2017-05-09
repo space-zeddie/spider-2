@@ -3,7 +3,6 @@ package base.web;
 /**
  * Created by matvii on 09.04.17.
  */
-import base.Experimental;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -54,14 +53,7 @@ public class Request implements Serializable {
         return priority;
     }
 
-    /**
-     * Set the priority of request for sorting.<br>
-     * Need a scheduler supporting priority.<br>
-     *
-     * @param priority priority
-     * @return this
-     */
-    @Experimental
+    
     public Request setPriority(long priority) {
         this.priority = priority;
         return this;

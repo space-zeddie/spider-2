@@ -1,4 +1,4 @@
-package base.roxy;
+package base.proxy;
 
 
 public class Proxy {
