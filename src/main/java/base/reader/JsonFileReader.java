@@ -32,10 +32,12 @@ public class JsonFileReader implements IReader {
             if (file.isDirectory())
                 loadFromPath(file.getAbsolutePath());
             else {
-                if (file.getName().matches("([^\\s]+(\\.(?i)(json))$)")) {
+                if (file.getName().matches("([^\\s]+(\\.(?i)(json))$)")
+                        && !checkedFilePaths.contains(file.getAbsolutePath())) {
                     String json = readAllLines(path);
                     ResultItems resultItems = JSON.parseObject(json, ResultItems.class);
                     savedItems.add(resultItems);
+                    checkedFilePaths.add(file.getAbsolutePath());
                 }
             }
         }
