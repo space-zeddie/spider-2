@@ -5,8 +5,8 @@ package base.web.downloaders;
  */
 
 import base.Task;
-import base.proxy.Proxy;
-import base.proxy.IProxyProvider;
+import base.web.proxy.Proxy;
+import base.web.proxy.IProxyProvider;
 import base.utils.CharsetUtils;
 import base.utils.HTTPClientUtils;
 import base.web.Page;

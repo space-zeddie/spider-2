@@ -4,7 +4,7 @@ package base.utils;
  * Created by matvii on 11.04.17.
  */
 
-import base.proxy.Proxy;
+import base.web.proxy.Proxy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

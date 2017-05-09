@@ -1,4 +1,4 @@
-package base.proxy;
+package base.web.proxy;
 
 /**
  * Created by matvii on 07.05.17.

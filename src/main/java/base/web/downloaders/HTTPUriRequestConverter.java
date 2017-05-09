@@ -4,7 +4,7 @@ package base.web.downloaders;
  * Created by matvii on 07.05.17.
  */
 
-import base.proxy.Proxy;
+import base.web.proxy.Proxy;
 import base.utils.HTTPConsts;
 import base.utils.UrlUtils;
 import base.web.Request;
