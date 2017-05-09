@@ -1,7 +1,9 @@
 package base.spider;
 
 import base.output.JsonFileOutput;
+import base.reader.JsonFileReader;
 
+import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -12,11 +14,17 @@ public class Tester {
 
     public static void main(String[] args) {
 
-        Spider.create(new ResearchPageProcessor())
+        /*Spider.create(new ResearchPageProcessor())
                 .addUrl("http://nz.ukma.edu.ua/index.php?option=com_content&task=view&id=560&Itemid=47")
                 .addPipeline(new JsonFileOutput())
                 .thread(5)
-                .run();
+                .run();*/
+        JsonFileReader jsonFileReader = new JsonFileReader();
+        try {
+            jsonFileReader.loadFromPath("/home/matvii/Jun-KMA/nz.ukma.edu.ua");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 
