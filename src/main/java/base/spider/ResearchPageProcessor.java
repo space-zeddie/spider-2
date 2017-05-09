@@ -25,8 +25,6 @@ public class ResearchPageProcessor implements IPageProcessor {
             .setSleepTime(SpiderConstants.SLEEP_TIME)
             .setTimeOut(SpiderConstants.TIME_OUT);
 
-    private IReader reader = new JsonFileReader();
-
     @Override
     public void process(Page page) {
         String charset = UrlUtils.getCharset(page.getHeaders().get("Content-Type").get(0));
