@@ -13,12 +13,12 @@ import java.util.Set;
 /**
  * Created by matvii on 09.05.17.
  */
-public class FileReader implements IReader {
+public class JsonFileReader implements IReader {
     private Logger logger = LoggerFactory.getLogger(getClass());
     private Set<ResultItems> savedItems = new HashSet<ResultItems>();
     private Set<String> checkedFilePaths = new HashSet<String>();
 
-    public FileReader() {}
+    public JsonFileReader() {}
 
     @Override
     public void loadFromPath(String path) {
