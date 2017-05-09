@@ -9,10 +9,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Created by matvii on 09.05.17.
@@ -35,8 +32,12 @@ public class JsonFileReader implements IReader {
                 if (file.getName().matches("([^\\s]+(\\.(?i)(json))$)")
                         && !checkedFilePaths.contains(file.getAbsolutePath())) {
                     String json = readAllLines(file.getAbsolutePath());
-                    ResultItems resultItems = JSON.parseObject(json, ResultItems.class);
-                    savedItems.add(resultItems);
+                    Map<String, Object> resultItems = JSON.parseObject(json, LinkedHashMap.class);
+                    ResultItems resultItems1 = new ResultItems();
+                    for (String key : resultItems.keySet()) {
+                        resultItems1.put(key, resultItems.get(key));
+                    }
+                    savedItems.add(resultItems1);
                     checkedFilePaths.add(file.getAbsolutePath());
                 }
             }
