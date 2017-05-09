@@ -50,6 +50,18 @@ public class ResultItems {
         return this;
     }
 
+    public boolean equalFields(ResultItems that) {
+        if (this.fields.size() != that.fields.size())
+            return false;
+        for (String key : this.fields.keySet()) {
+            if (!that.fields.keySet().contains(key))
+                return false;
+            if (!that.get(key).equals(this.get(key)))
+                return false;
+        }
+        return true;
+    }
+
     @Override
     public String toString() {
         return "ResultItems{" +
