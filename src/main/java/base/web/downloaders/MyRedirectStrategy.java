@@ -1,5 +1,9 @@
 package base.web.downloaders;
 
+/**
+ * Created by matvii on 07.05.17.
+ */
+
 import org.apache.http.HttpRequest;
 import org.apache.http.HttpResponse;
 import org.apache.http.ProtocolException;

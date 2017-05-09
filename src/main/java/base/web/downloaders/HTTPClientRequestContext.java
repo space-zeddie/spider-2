@@ -1,12 +1,15 @@
 package base.web.downloaders;
 
+/**
+ * Created by matvii on 07.05.17.
+ */
+
 import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.client.protocol.HttpClientContext;
 
 public class HTTPClientRequestContext {
 
     private HttpUriRequest httpUriRequest;
-
     private HttpClientContext httpClientContext;
 
     public HttpUriRequest getHttpUriRequest() {

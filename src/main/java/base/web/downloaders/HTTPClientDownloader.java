@@ -1,5 +1,9 @@
 package base.web.downloaders;
 
+/**
+ * Created by matvii on 07.05.17.
+ */
+
 import base.Task;
 import base.proxy.Proxy;
 import base.proxy.IProxyProvider;
@@ -12,6 +16,7 @@ import base.web.extractors.PlainText;
 import org.apache.commons.io.IOUtils;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.CloseableHttpResponse;
+
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.util.*;
 import org.slf4j.Logger;
@@ -26,15 +31,10 @@ import java.util.Map;
 public class HTTPClientDownloader extends AbstractDownloader {
 
     private Logger logger = LoggerFactory.getLogger(getClass());
-
     private final Map<String, CloseableHttpClient> httpClients = new HashMap<String, CloseableHttpClient>();
-
     private HTTPClientGenerator httpClientGenerator = new HTTPClientGenerator();
-
     private HTTPUriRequestConverter httpUriRequestConverter = new HTTPUriRequestConverter();
-
     private IProxyProvider proxyProvider;
-
     private boolean responseHeader = true;
 
     public void setHttpUriRequestConverter(HTTPUriRequestConverter httpUriRequestConverter) {
