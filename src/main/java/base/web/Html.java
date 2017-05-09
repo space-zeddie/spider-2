@@ -3,8 +3,6 @@ package base.web;
 /**
  * Created by matvii on 10.04.17.
  */
-import base.web.extractors.IElementExtractor;
-import base.web.extractors.IExtractor;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -17,25 +15,14 @@ import java.util.List;
 
 public class Html extends HtmlNode {
 
-    private static volatile boolean INITED = false;
-    public static boolean DISABLE_HTML_ENTITY_ESCAPE = false;
+    private static volatile boolean ESCAPED = false;
 
     private Document document;
     private Logger logger = LoggerFactory.getLogger(getClass());
 
-
-    private void disableJsoupHtmlEntityEscape() {
-        if (DISABLE_HTML_ENTITY_ESCAPE && !INITED) {
-            Entities.EscapeMode.base.getMap().clear();
-            Entities.EscapeMode.extended.getMap().clear();
-            Entities.EscapeMode.xhtml.getMap().clear();
-            INITED = true;
-        }
-    }
-
     public Html(String text, String url) {
         try {
-            disableJsoupHtmlEntityEscape();
+            disableJsoupEscape();
             this.document = Jsoup.parse(text, url);
         } catch (Exception e) {
             this.document = null;
@@ -45,7 +32,7 @@ public class Html extends HtmlNode {
 
     public Html(String text) {
         try {
-            disableJsoupHtmlEntityEscape();
+            disableJsoupEscape();
             this.document = Jsoup.parse(text);
         } catch (Exception e) {
             this.document = null;
@@ -64,6 +51,16 @@ public class Html extends HtmlNode {
     @Override
     protected List<Element> getElements() {
         return Collections.<Element>singletonList(getDocument());
+    }
+
+
+    private void disableJsoupEscape() {
+        if (!ESCAPED) {
+            Entities.EscapeMode.base.getMap().clear();
+            Entities.EscapeMode.extended.getMap().clear();
+            Entities.EscapeMode.xhtml.getMap().clear();
+            ESCAPED = true;
+        }
     }
 
 }

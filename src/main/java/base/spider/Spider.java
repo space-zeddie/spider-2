@@ -359,7 +359,7 @@ public class Spider implements Runnable, Task {
 
     private void onDownloadSuccess(Request request, Page page) {
         onSuccess(request);
-        if (site.getAcceptStatCode().contains(page.getStatusCode())){
+        if (site.getAcceptStatCode().contains(page.getStatus())){
             pageProcessor.process(page);
             extractAndAddRequests(page, spawnUrl);
             if (!page.getResultItems().isSkip()) {

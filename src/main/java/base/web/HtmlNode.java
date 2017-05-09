@@ -45,12 +45,6 @@ public class HtmlNode extends AnyExtractable {
         return selectList(extractor);
     }
 
-    /**
-     * extract elements
-     *
-     * @param elementSelector elementSelector
-     * @return result
-     */
     protected IExtractable extractElements(BasicElementExtractor elementSelector) {
         ListIterator<Element> elementIterator = getElements().listIterator();
         if (!elementSelector.hasAttribute()) {
@@ -74,13 +68,6 @@ public class HtmlNode extends AnyExtractable {
         }
     }
 
-    /**
-     * Only document can be extract
-     * See: https://github.com/code4craft/webmagic/issues/113
-     *
-     * @param elementIterator elementIterator
-     * @return element element
-     */
     private Element checkElementAndConvert(ListIterator<Element> elementIterator) {
         Element element = elementIterator.next();
         if (!(element instanceof Document)) {

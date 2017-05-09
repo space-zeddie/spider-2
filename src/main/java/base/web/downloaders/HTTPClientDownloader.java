@@ -106,7 +106,7 @@ public class HTTPClientDownloader extends AbstractDownloader {
         page.setRawText(content);
         page.setUrl(new PlainText(request.getUrl()));
         page.setRequest(request);
-        page.setStatusCode(httpResponse.getStatusLine().getStatusCode());
+        page.setStatus(httpResponse.getStatusLine().getStatusCode());
         page.setDownloadSuccess(true);
         if (responseHeader) {
             page.setHeaders(HTTPClientUtils.convertHeaders(httpResponse.getAllHeaders()));

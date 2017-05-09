@@ -1,4 +1,5 @@
-package base.web; /**
+package base.web;
+/**
  * Created by matvii on 08.04.17.
  */
 import base.ResultItems;
@@ -14,21 +15,13 @@ import java.util.Map;
 public class Page {
 
     private Request request;
-
     private ResultItems resultItems = new ResultItems();
-
     private Html html;
-
     private String rawText;
-
     private IExtractable url;
-
     private Map<String,List<String>> headers;
-
-    private int statusCode = HTTPConsts.StatusCode.CODE_200;
-
+    private int status = HTTPConsts.StatusCode.CODE_200;
     private boolean downloadSuccess = true;
-
     private List<Request> targetRequests = new ArrayList<Request>();
 
     public Page() {
@@ -46,8 +39,7 @@ public class Page {
 
     }
 
-
-    // store extract results
+    // store extracted results
     public void putField(String key, Object field) {
         resultItems.put(key, field);
     }
@@ -121,12 +113,12 @@ public class Page {
         return resultItems;
     }
 
-    public int getStatusCode() {
-        return statusCode;
+    public int getStatus() {
+        return status;
     }
 
-    public void setStatusCode(int statusCode) {
-        this.statusCode = statusCode;
+    public void setStatus(int status) {
+        this.status = status;
     }
 
     public String getRawText() {
@@ -163,7 +155,7 @@ public class Page {
                 ", rawText='" + rawText + '\'' +
                 ", url=" + url +
                 ", headers=" + headers +
-                ", statusCode=" + statusCode +
+                ", status=" + status +
                 ", success=" + downloadSuccess +
                 ", targetRequests=" + targetRequests +
                 '}';

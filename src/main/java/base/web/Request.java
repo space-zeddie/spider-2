@@ -8,42 +8,20 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Object contains url to crawl.<br>
- * It contains some additional information.<br>
- */
+// urls for the spider to crawl
 public class Request implements Serializable {
 
     private static final long serialVersionUID = 2062192774891352043L;
-
     public static final String CYCLE_TRIED_TIMES = "_cycle_tried_times";
-
     private String url;
-
     private String method;
-
     private HTTPRequestBody requestBody;
-
-    /**
-     * Store additional information in extras.
-     */
-    private Map<String, Object> extras;
-
-    /**
-     * cookies for current url, if not set use Site's cookies
-     */
+    private Map<String, Object> extraInfo;
     private Map<String, String> cookies = new HashMap<String, String>();
-
     private Map<String, String> headers = new HashMap<String, String>();
-
-    /**
-     * Priority of the request.<br>
-     * The bigger will be processed earlier. <br>
-     */
     private long priority;
 
-    public Request() {
-    }
+    public Request() {}
 
     public Request(String url) {
         this.url = url;
@@ -60,17 +38,17 @@ public class Request implements Serializable {
     }
 
     public Object getExtra(String key) {
-        if (extras == null) {
+        if (extraInfo == null) {
             return null;
         }
-        return extras.get(key);
+        return extraInfo.get(key);
     }
 
     public Request putExtra(String key, Object value) {
-        if (extras == null) {
-            extras = new HashMap<String, Object>();
+        if (extraInfo == null) {
+            extraInfo = new HashMap<String, Object>();
         }
-        extras.put(key, value);
+        extraInfo.put(key, value);
         return this;
     }
 
@@ -78,23 +56,19 @@ public class Request implements Serializable {
         return url;
     }
 
-    public Map<String, Object> getExtras() {
-        return extras;
+    public Map<String, Object> getExtraInfo() {
+        return extraInfo;
     }
 
-    public void setExtras(Map<String, Object> extras) {
-        this.extras = extras;
+    public void setExtraInfo(Map<String, Object> extraInfo) {
+        this.extraInfo = extraInfo;
     }
 
     public void setUrl(String url) {
         this.url = url;
     }
 
-    /**
-     * The http method of the request. Get for default.
-     * @return httpMethod
-     * @since 0.5.0
-     */
+    // HTTP method
     public String getMethod() {
         return method;
     }
@@ -152,7 +126,7 @@ public class Request implements Serializable {
         return "Request{" +
                 "url='" + url + '\'' +
                 ", method='" + method + '\'' +
-                ", extras=" + extras +
+                ", extraInfo=" + extraInfo +
                 ", priority=" + priority +
                 ", headers=" + headers +
                 ", cookies="+ cookies+
