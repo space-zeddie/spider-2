@@ -1,5 +1,9 @@
 package base.web.downloaders;
 
+/**
+ * Created by matvii on 09.04.17.
+ */
+
 import org.apache.http.HttpException;
 import org.apache.http.HttpRequest;
 import org.apache.http.HttpRequestInterceptor;
@@ -31,7 +35,6 @@ import java.util.Map;
 public class HTTPClientGenerator {
 	
 	private transient Logger logger = LoggerFactory.getLogger(getClass());
-	
     private PoolingHttpClientConnectionManager connectionManager;
 
     public HTTPClientGenerator() {
@@ -95,7 +98,7 @@ public class HTTPClientGenerator {
         } else {
             httpClientBuilder.setUserAgent("");
         }
-        
+
         httpClientBuilder.setRedirectStrategy(new MyRedirectStrategy());
 
         SocketConfig.Builder socketConfigBuilder = SocketConfig.custom();
