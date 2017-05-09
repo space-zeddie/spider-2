@@ -33,7 +33,7 @@ public class JsonFileReader implements IReader {
             if (file.isDirectory())
                 loadFromPath(file.getAbsolutePath());
             else {
-                if (file.getName().matches("\"([^\\\\s]+(\\\\.(?i)(json))$)\"")) {
+                if (file.getName().matches("([^\\s]+(\\.(?i)(pdf))$)")) {
                     String json = readAllLines(path);
                 }
             }
