@@ -66,30 +66,4 @@ public class Html extends HtmlNode {
         return Collections.<Element>singletonList(getDocument());
     }
 
-    /**
-     * @param extractor extractor
-     * @return result
-     */
-    public String selectDocument(IExtractor extractor) {
-        if (extractor instanceof IElementExtractor) {
-            IElementExtractor elementExtractor = (IElementExtractor) extractor;
-            return elementExtractor.select(getDocument());
-        } else {
-            return extractor.select(getFirstSourceText());
-        }
-    }
-
-    public List<String> selectDocumentForList(IExtractor extractor) {
-        if (extractor instanceof IElementExtractor) {
-            IElementExtractor elementExtractor = (IElementExtractor) extractor;
-            return elementExtractor.selectList(getDocument());
-        } else {
-            return extractor.selectList(getFirstSourceText());
-        }
-    }
-
-    public static Html create(String text) {
-        return new Html(text);
-    }
-
 }
