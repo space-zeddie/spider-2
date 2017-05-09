@@ -3,6 +3,7 @@ package base.reader;
 import base.ResultItems;
 
 import java.io.File;
+import java.io.IOException;
 
 /**
  * Reads the objects already collected by the spider
@@ -12,7 +13,7 @@ import java.io.File;
 
 public interface IReader {
 
-    void loadFromPath(String path);
+    void loadFromPath(String path) throws IOException;
 
     ResultItems getSavedItems();
 
