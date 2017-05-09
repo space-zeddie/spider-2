@@ -23,7 +23,7 @@ public class PlainText extends AnyExtractable {
     public static PlainText create(String text) {
         return new PlainText(text);
     }
-    
+
     @Override
     public Extractable $(String selector) {
         throw new UnsupportedOperationException("$ can not apply to plain text. Please check whether you use a previous xpath with attribute extract (/@href etc).");

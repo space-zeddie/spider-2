@@ -28,12 +28,6 @@ public class HtmlNode extends AnyExtractable {
     }
 
     @Override
-    public Extractable smartContent() {
-        SmartContentExtractor smartContentExtractor = Extractors.smartContent();
-        return select(smartContentExtractor, getSourceTexts());
-    }
-
-    @Override
     public Extractable links() {
         return extractElements(new LinksExtractor());
     }

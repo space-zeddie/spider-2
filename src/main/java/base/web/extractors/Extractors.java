@@ -12,11 +12,7 @@ public class Extractors {
     public static RegexExtractor regex(String expr, int group) {
         return new RegexExtractor(expr,group);
     }
-
-    public static SmartContentExtractor smartContent() {
-        return new SmartContentExtractor();
-    }
-
+    
     public static CssExtractor $(String expr) {
         return new CssExtractor(expr);
     }
