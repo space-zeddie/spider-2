@@ -1,5 +1,9 @@
 package base.utils;
 
+/**
+ * Created by matvii on 11.04.17.
+ */
+
 import base.web.Request;
 import org.apache.commons.lang3.StringUtils;
 
@@ -14,26 +18,17 @@ import java.util.regex.Pattern;
 
 public class UrlUtils {
 
-    /**
-     * canonicalizeUrl
-     * <br>
-     * Borrowed from Jsoup.
-     *
-     * @param url url
-     * @param refer refer
-     * @return canonicalizeUrl
-     */
+    private static final Pattern patternForCharset = Pattern.compile("charset\\s*=\\s*['\"]*([^\\s;'\"]*)");
+
     public static String canonicalizeUrl(String url, String refer) {
         URL base;
         try {
             try {
                 base = new URL(refer);
             } catch (MalformedURLException e) {
-                // the base is unsuitable, but the attribute may be abs on its own, so try that
                 URL abs = new URL(refer);
                 return abs.toExternalForm();
             }
-            // workaround: java resolves '//path/file + ?foo' to '//path/?foo', not '//path/file?foo' as desired
             if (url.startsWith("?"))
                 url = base.getPath() + url;
             URL abs = new URL(base, url);
@@ -43,13 +38,8 @@ public class UrlUtils {
         }
     }
 
-    /**
-     *
-     * @param url url
-     * @return new url
-     */
+
     public static String encodeIllegalCharacterInUrl(String url) {
-        //TODO more charator support
         return url.replace(" ", "%20");
     }
 
@@ -101,8 +91,6 @@ public class UrlUtils {
         }
         return urlList;
     }
-
-    private static final Pattern patternForCharset = Pattern.compile("charset\\s*=\\s*['\"]*([^\\s;'\"]*)");
 
     public static String getCharset(String contentType) {
         Matcher matcher = patternForCharset.matcher(contentType);

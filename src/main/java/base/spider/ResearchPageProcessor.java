@@ -1,6 +1,7 @@
 package base.spider;
 
 import base.IPageProcessor;
+import base.utils.UrlUtils;
 import base.web.Page;
 import base.web.Site;
 import base.web.extractors.IExtractable;
@@ -19,10 +20,8 @@ public class ResearchPageProcessor implements IPageProcessor {
 
     @Override
     public void process(Page page) {
-        String[] header = page.getHeaders().get("Content-Type").get(0).split(";charset=");
-        if (header.length > 1) {
-            site.setCharset(header[1]);
-        }
+        String charset = UrlUtils.getCharset(page.getHeaders().get("Content-Type").get(0));
+        site.setCharset(charset);
         page.addTargetRequests(page.getHtml().links().regex(Constants.PDF_LINK_PATTERN).all(), 10);
         page.putField("paper_link", page.getUrl().regex(Constants.PDF_LINK_PATTERN).toString());
         IExtractable regex_url = page.getUrl().regex(Constants.PDF_LINK_PATTERN);

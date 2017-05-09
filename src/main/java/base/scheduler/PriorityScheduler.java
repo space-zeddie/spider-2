@@ -2,7 +2,7 @@ package base.scheduler;
 
 
 import base.Task;
-import base.utils.NumberUtils;
+import base.utils.LongNumberCompare;
 import base.web.Request;
 
 import java.util.Comparator;
@@ -22,14 +22,14 @@ public class PriorityScheduler extends DuplicateRemovedScheduler implements IMon
     private PriorityBlockingQueue<Request> priorityQueuePlus = new PriorityBlockingQueue<Request>(INITIAL_CAPACITY, new Comparator<Request>() {
         @Override
         public int compare(Request o1, Request o2) {
-            return -NumberUtils.compareLong(o1.getPriority(), o2.getPriority());
+            return -LongNumberCompare.compareLong(o1.getPriority(), o2.getPriority());
         }
     });
 
     private PriorityBlockingQueue<Request> priorityQueueMinus = new PriorityBlockingQueue<Request>(INITIAL_CAPACITY, new Comparator<Request>() {
         @Override
         public int compare(Request o1, Request o2) {
-            return -NumberUtils.compareLong(o1.getPriority(), o2.getPriority());
+            return -LongNumberCompare.compareLong(o1.getPriority(), o2.getPriority());
         }
     });
 

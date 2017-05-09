@@ -1,5 +1,9 @@
 package base.utils;
 
+/**
+ * Created by matvii on 10.04.17.
+ */
+
 import org.apache.commons.lang3.StringUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -48,7 +52,6 @@ public abstract class CharsetUtils {
             }
         }
         logger.debug("Auto get charset: {}", charset);
-        // 3、todo use tools as cpdetector for content decode
         return charset;
     }
     

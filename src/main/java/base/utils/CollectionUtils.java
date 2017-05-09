@@ -1,13 +1,14 @@
 package base.utils;
 
+/**
+ * Created by matvii on 11.04.17.
+ */
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-/**
- * Created by matvii on 11.04.17.
- */
 public class CollectionUtils {
 
     public static <T> Set<T> newHashSet(T... t){

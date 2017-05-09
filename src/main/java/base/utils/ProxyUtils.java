@@ -1,5 +1,9 @@
 package base.utils;
 
+/**
+ * Created by matvii on 11.04.17.
+ */
+
 import base.proxy.Proxy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -7,6 +11,10 @@ import org.slf4j.LoggerFactory;
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.net.Socket;
+
+/**
+ * Created by matvii on 11.04.17.
+ */
 
 public class ProxyUtils {
 
@@ -20,14 +28,14 @@ public class ProxyUtils {
 			socket.connect(endpointSocketAddr, 3000);
 			return true;
 		} catch (IOException e) {
-			logger.warn("FAILRE - CAN not connect!  remote: " + p);
+			logger.warn("failed to connect to remote: " + p);
 			return false;
 		} finally {
 			if (socket != null) {
 				try {
 					socket.close();
 				} catch (IOException e) {
-					logger.warn("Error occurred while closing socket of validating proxy", e);
+					logger.warn("Error while closing sockets", e);
 				}
 			}
 		}

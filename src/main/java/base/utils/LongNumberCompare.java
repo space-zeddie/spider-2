@@ -1,9 +1,10 @@
 package base.utils;
 
 /**
- * @author yihua.huang@dianping.com
+ * Created by matvii on 11.04.17.
  */
-public abstract class NumberUtils {
+
+public abstract class LongNumberCompare {
 
     public static int compareLong(long o1, long o2) {
         if (o1 < o2) {

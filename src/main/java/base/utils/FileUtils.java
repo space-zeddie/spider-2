@@ -1,11 +1,14 @@
 package base.utils;
 
+/**
+ * Created by matvii on 11.04.17.
+ */
+
 import java.io.File;
 
 public class FileUtils {
 
     protected String path;
-
     public static String PATH_SEPERATOR = "/";
 
     static {

@@ -1,5 +1,9 @@
 package base.utils;
 
+/**
+ * Created by matvii on 11.04.17.
+ */
+
 import org.apache.http.Header;
 
 import java.util.ArrayList;
