@@ -1,15 +1,15 @@
 package base.scheduler;
 
+/**
+ * Created by matvii on 11.04.17.
+ */
+
 import base.Task;
 import base.web.Request;
 
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
-
-/**
- * Created by matvii on 11.04.17.
- */
 public class QueueScheduler extends DuplicateRemovedScheduler implements IMonitorableScheduler {
 
     private BlockingQueue<Request> queue = new LinkedBlockingQueue<Request>();

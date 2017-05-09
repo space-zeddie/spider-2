@@ -1,11 +1,12 @@
 package base.scheduler;
 
-import base.web.Request;
-import base.Task;
-
 /**
  * Created by matvii on 11.04.17.
  */
+
+import base.web.Request;
+import base.Task;
+
 public interface IScheduler {
 
     // fetch

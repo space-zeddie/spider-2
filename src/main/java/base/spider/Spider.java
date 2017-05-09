@@ -1,7 +1,7 @@
 package base.spider;
 
 /**
- * Created by matvii on 01.05.17.
+ * Created by matvii on 13.04.17.
  */
 
 import base.CountableThreadPool;
@@ -34,57 +34,31 @@ import java.util.concurrent.atomic.AtomicLong;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 
-/**
- * Created by matvii on 13.04.17.
- */
 public class Spider implements Runnable, Task {
 
     protected IDownloader downloader;
-
     protected List<IOutput> pipelines = new ArrayList<IOutput>();
-
     protected IPageProcessor pageProcessor;
-
     protected List<Request> startRequests;
-
     protected Site site;
-
-    protected String uuid;
-
+    protected String id;
     protected IScheduler scheduler = new QueueScheduler();
-
     protected Logger logger = LoggerFactory.getLogger(getClass());
-
     protected CountableThreadPool threadPool;
-
     protected ExecutorService executorService;
-
     protected int threadNum = 1;
-
     protected AtomicInteger stat = new AtomicInteger(STAT_INIT);
-
     protected boolean exitWhenComplete = true;
-
     protected final static int STAT_INIT = 0;
-
     protected final static int STAT_RUNNING = 1;
-
     protected final static int STAT_STOPPED = 2;
-
     protected boolean spawnUrl = true;
-
     protected boolean destroyWhenExit = true;
-
     private ReentrantLock newUrlLock = new ReentrantLock();
-
     private Condition newUrlCondition = newUrlLock.newCondition();
-
     private List<ISpiderListener> spiderListeners;
-
     private final AtomicLong pageCount = new AtomicLong(0);
-
     private Date startTime;
-
     private int emptySleepTime = 30000;
 
     /**
@@ -135,14 +109,14 @@ public class Spider implements Runnable, Task {
     }
 
     /**
-     * Set an uuid for spider.<br>
-     * Default uuid is domain of site.<br>
+     * Set an id for spider.<br>
+     * Default id is domain of site.<br>
      *
-     * @param uuid uuid
+     * @param uuid id
      * @return this
      */
     public Spider setUUID(String uuid) {
-        this.uuid = uuid;
+        this.id = uuid;
         return this;
     }
 
@@ -655,14 +629,14 @@ public class Spider implements Runnable, Task {
 
     @Override
     public String getId() {
-        if (uuid != null) {
-            return uuid;
+        if (id != null) {
+            return id;
         }
         if (site != null) {
             return site.getDomain();
         }
-        uuid = UUID.randomUUID().toString();
-        return uuid;
+        id = UUID.randomUUID().toString();
+        return id;
     }
 
     public Spider setExecutorService(ExecutorService executorService) {

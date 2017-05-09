@@ -1,5 +1,9 @@
 package base.scheduler;
 
+/**
+ * Created by matvii on 11.04.17.
+ */
+
 import base.Task;
 import base.web.Request;
 
@@ -7,9 +11,6 @@ import java.util.Collections;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
-/**
- * Created by matvii on 11.04.17.
- */
 public class HashSetDuplicateRemover implements IDuplicateRemover {
 
     private Set<String> urls = Collections.newSetFromMap(new ConcurrentHashMap<String, Boolean>());

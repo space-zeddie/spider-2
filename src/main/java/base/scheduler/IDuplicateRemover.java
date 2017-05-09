@@ -1,18 +1,18 @@
 package base.scheduler;
 
+/**
+ * Created by matvii on 11.04.17.
+ */
 
 import base.Task;
 import base.web.Request;
 
-/**
- * Created by matvii on 11.04.17.
- */
 public interface IDuplicateRemover {
 
-    public boolean isDuplicate(Request request, Task task);
+    boolean isDuplicate(Request request, Task task);
 
-    public void resetDuplicateCheck(Task task);
+    void resetDuplicateCheck(Task task);
 
-    public int getTotalRequestsCount(Task task);
+    int getTotalRequestsCount(Task task);
 
 }

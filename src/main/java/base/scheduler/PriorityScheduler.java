@@ -1,5 +1,8 @@
 package base.scheduler;
 
+/**
+ * Created by matvii on 11.04.17.
+ */
 
 import base.Task;
 import base.utils.LongNumberCompare;
@@ -10,13 +13,9 @@ import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.PriorityBlockingQueue;
 
-/**
- * Created by matvii on 11.04.17.
- */
 public class PriorityScheduler extends DuplicateRemovedScheduler implements IMonitorableScheduler {
 
     public static final int INITIAL_CAPACITY = 5;
-
     private BlockingQueue<Request> noPriorityQueue = new LinkedBlockingQueue<Request>();
 
     private PriorityBlockingQueue<Request> priorityQueuePlus = new PriorityBlockingQueue<Request>(INITIAL_CAPACITY, new Comparator<Request>() {
