@@ -4,6 +4,7 @@ import base.ResultItems;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Set;
 
 /**
  * Reads the objects already collected by the spider
@@ -15,6 +16,6 @@ public interface IReader {
 
     void loadFromPath(String path) throws IOException;
 
-    ResultItems getSavedItems();
+    Set<ResultItems> getSavedItems();
 
 }

@@ -9,7 +9,6 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -35,6 +34,8 @@ public class JsonFileReader implements IReader {
             else {
                 if (file.getName().matches("([^\\s]+(\\.(?i)(json))$)")) {
                     String json = readAllLines(path);
+                    ResultItems resultItems = JSON.parseObject(json, ResultItems.class);
+                    savedItems.add(resultItems);
                 }
             }
         }
@@ -57,7 +58,9 @@ public class JsonFileReader implements IReader {
     }
 
     @Override
-    public ResultItems getSavedItems() {
-        return null;
+    public Set<ResultItems> getSavedItems() {
+        return savedItems;
     }
+
+
 }
