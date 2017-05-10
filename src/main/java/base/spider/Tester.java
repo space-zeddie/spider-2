@@ -16,13 +16,13 @@ public class Tester {
 
     public static void main(String[] args) {
 
-        /*Spider.create(new ResearchPageProcessor())
+        Spider.create(new ResearchPageProcessor())
                 .addUrl("http://nz.ukma.edu.ua/index.php?option=com_content&task=view&id=560&Itemid=47")
                 .addPipeline(new JsonFileOutput())
                 .thread(5)
-                .run();*/
+                .run();
 
-        System.out.println("/home/matvii/Jun-KMA/nz.ukma.edu.ua/".matches("([^\\s]+(\\.(?i)(json))$)"));
+       /* System.out.println("/home/matvii/Jun-KMA/nz.ukma.edu.ua/".matches("([^\\s]+(\\.(?i)(json))$)"));
         JsonFileReader jsonFileReader = new JsonFileReader();
         try {
             jsonFileReader.loadFromPath("/home/matvii/Jun-KMA/nz.ukma.edu.ua/");
@@ -32,7 +32,7 @@ public class Tester {
             }
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
 
     }
 

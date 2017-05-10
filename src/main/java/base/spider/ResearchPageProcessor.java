@@ -11,10 +11,16 @@ import base.utils.UrlUtils;
 import base.web.Page;
 import base.web.Site;
 import base.web.extractors.IExtractable;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import sun.nio.cs.StandardCharsets;
 
+import java.io.*;
+import java.nio.charset.Charset;
 import java.util.Date;
+
+import static org.apache.commons.io.FileUtils.getFile;
 
 public class ResearchPageProcessor implements IPageProcessor {
 
@@ -35,6 +41,24 @@ public class ResearchPageProcessor implements IPageProcessor {
         if (regex_url.toString() != null) {
             String[] parts = (regex_url.toString().split("/"));
             page.putField("file_name", parts[parts.length - 1]);
+            try {
+                if (charset!=null) {
+                    File f = new File("/home/matvii/Jun-KMA/1/", "raw_" + parts[parts.length - 1] + ".txt");
+                    File f1 = new File("/home/matvii/Jun-KMA/1/", "html_" + parts[parts.length - 1] + ".txt");
+                    OutputStreamWriter printWriter = new OutputStreamWriter(new FileOutputStream(f), Charset.forName(charset));
+                    printWriter.write(page.getRawText());
+                    printWriter.close();
+                    printWriter = new OutputStreamWriter(new FileOutputStream(f1), Charset.forName(charset));
+                   // page.getHtml().
+                    //for (String s : page.getHtml().all())
+                       // printWriter.write(page.getHtml().getFirstSourceText().);
+
+                    logger.warn("" + page.getRawText().indexOf("Ключові слова:"));
+                    printWriter.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         } else {
             page.putField("file_name", null);
         }
