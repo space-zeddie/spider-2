@@ -15,4 +15,9 @@ public class CyrillicUtils {
         String value = new String(bytes, UTF_8);
         return value;
     }
+    public static String convertToISO(String utf_string) throws UnsupportedEncodingException {
+        byte bytes[] = utf_string.getBytes(UTF_8);
+        String value = new String(bytes, ISO_8859_1);
+        return value;
+    }
 }
