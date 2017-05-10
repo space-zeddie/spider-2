@@ -19,13 +19,13 @@ public class Tester {
 
     public static void main(String[] args) {
 
-        /*Spider.create(new ResearchPageProcessor())
+        Spider.create(new ResearchPageProcessor())
                 .addUrl("http://nz.ukma.edu.ua/index.php?option=com_content&task=view&id=560&Itemid=47")
                 .addPipeline(new JsonFileOutput())
                 .thread(5)
-                .run();*/
+                .run();
 
-        String c1 = "Ключові\nслова:\n";
+        /*String c1 = "Ключові\nслова:\n";
         String c2 = "робив сам Хопфілд, після чого відбулася низка модифікацій запропонованого ним алгоритму. \n" +
                 "Тобто всі представлені у \n" +
                 "статті методи є \n" +
@@ -40,12 +40,12 @@ public class Tester {
         try {
             String c1_utf8 = CyrillicUtils.convertToUTF8(c1);
             String c2_utf8 = CyrillicUtils.convertToUTF8(c2);
-            int i1 = c2_utf8.indexOf(c1_utf8);
+            int i1 = c2_utf8.indexOf(c1_utf8) + c1_utf8.length();
             int i2 = c2_utf8.indexOf(CyrillicUtils.convertToUTF8("."), i1);
-            System.out.println();
+            System.out.println(c2_utf8.substring(i1, i2));
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
-        }
+        }*/
 
        /* System.out.println("/home/matvii/Jun-KMA/nz.ukma.edu.ua/".matches("([^\\s]+(\\.(?i)(json))$)"));
         JsonFileReader jsonFileReader = new JsonFileReader();

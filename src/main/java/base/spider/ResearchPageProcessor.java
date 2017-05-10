@@ -7,6 +7,7 @@ package base.spider;
 import base.IPageProcessor;
 import base.reader.IReader;
 import base.reader.JsonFileReader;
+import base.utils.CyrillicUtils;
 import base.utils.UrlUtils;
 import base.web.Page;
 import base.web.Site;
@@ -53,7 +54,7 @@ public class ResearchPageProcessor implements IPageProcessor {
                     //for (String s : page.getHtml().all())
                        // printWriter.write(page.getHtml().getFirstSourceText().);
 
-                    logger.warn("" + page.getRawText().indexOf("Ключові слова:"));
+                    logger.warn(getKeywords(page));
                     printWriter.close();
                 }
             } catch (IOException e) {
@@ -71,5 +72,15 @@ public class ResearchPageProcessor implements IPageProcessor {
     @Override
     public Site getSite() {
         return site;
+    }
+
+    private String getKeywords(Page page) throws UnsupportedEncodingException {
+        String c1 = "Ключові\nслова:\n";
+        String c1_utf8 = CyrillicUtils.convertToUTF8(c1);
+        String c2_utf8 = CyrillicUtils.convertToUTF8(page.getRawText());
+        int i1 = c2_utf8.indexOf(c1_utf8) + c1_utf8.length();
+        int i2 = c2_utf8.indexOf(CyrillicUtils.convertToUTF8("."), i1);
+        return (c2_utf8.substring(i1, i2));
+
     }
 }
