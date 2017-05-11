@@ -4,6 +4,8 @@ package crawler.web;
  * Created by matvii on 09.04.17.
  */
 
+import crawler.web.downloaders.HTTPRequestBody;
+
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;

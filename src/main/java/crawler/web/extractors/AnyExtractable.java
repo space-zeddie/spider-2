@@ -70,8 +70,8 @@ public abstract class AnyExtractable implements IExtractable {
 
     @Override
     public IExtractable replace(String regex, String replacement) {
-        ReplaceSelector replaceSelector = new ReplaceSelector(regex,replacement);
-        return select(replaceSelector, getSourceTexts());
+        ReplacerByRegex replacerByRegex = new ReplacerByRegex(regex,replacement);
+        return select(replacerByRegex, getSourceTexts());
     }
 
     public String getFirstSourceText() {
