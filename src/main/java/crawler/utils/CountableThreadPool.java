@@ -1,4 +1,4 @@
-package crawler;
+package crawler.utils;
 
 /**
  * Created by matvii on 07.05.17.

@@ -3,7 +3,7 @@ package crawler.web;
 /**
  * Created by matvii on 09.04.17.
  */
-import crawler.Task;
+import crawler.spider.Task;
 import crawler.utils.HTTPConsts;
 
 import java.util.*;

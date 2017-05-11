@@ -1,7 +1,7 @@
 package crawler.output;
 
-import crawler.ResultItems;
-import crawler.Task;
+import crawler.spider.ResultItems;
+import crawler.spider.Task;
 
 import java.util.ArrayList;
 import java.util.List;

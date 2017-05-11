@@ -4,7 +4,7 @@ package crawler.web.downloaders;
  * Created by matvii on 07.05.17.
  */
 
-import crawler.Task;
+import crawler.spider.Task;
 import crawler.web.proxy.Proxy;
 import crawler.web.proxy.IProxyProvider;
 import crawler.utils.CharsetUtils;
