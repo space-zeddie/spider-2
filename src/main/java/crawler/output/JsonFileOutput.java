@@ -1,7 +1,7 @@
 package crawler.output;
 
-import crawler.ResultItems;
-import crawler.Task;
+import crawler.spider.ResultItems;
+import crawler.spider.Task;
 import crawler.utils.FileUtils;
 import com.alibaba.fastjson.JSON;
 import org.apache.commons.codec.digest.DigestUtils;

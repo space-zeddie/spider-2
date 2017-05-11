@@ -5,7 +5,7 @@ package crawler.spider.scheduler;
  */
 
 import crawler.web.Request;
-import crawler.Task;
+import crawler.spider.Task;
 
 public interface IScheduler {
 

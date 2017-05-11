@@ -1,4 +1,4 @@
-package crawler;
+package crawler.spider;
 /**
  * Created by matvii on 08.04.17.
  */

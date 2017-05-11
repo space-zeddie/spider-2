@@ -1,6 +1,6 @@
 package crawler.reader;
 
-import crawler.ResultItems;
+import crawler.spider.ResultItems;
 
 import java.io.IOException;
 import java.util.Set;

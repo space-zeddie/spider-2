@@ -4,7 +4,6 @@ package crawler.spider;
  * Created by matvii on 07.05.17.
  */
 
-import crawler.IPageProcessor;
 import crawler.utils.CyrillicUtils;
 import crawler.utils.UrlUtils;
 import crawler.web.Page;

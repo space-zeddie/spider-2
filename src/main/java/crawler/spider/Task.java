@@ -1,4 +1,4 @@
-package crawler;
+package crawler.spider;
 
 import crawler.web.Site;
 

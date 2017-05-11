@@ -4,7 +4,7 @@ package crawler.spider.scheduler;
  * Created by matvii on 11.04.17.
  */
 
-import crawler.Task;
+import crawler.spider.Task;
 import crawler.utils.HTTPConsts;
 import crawler.web.Request;
 import org.slf4j.Logger;

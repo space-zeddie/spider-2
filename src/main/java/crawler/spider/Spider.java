@@ -4,9 +4,7 @@ package crawler.spider;
  * Created by matvii on 13.04.17.
  */
 
-import crawler.CountableThreadPool;
-import crawler.IPageProcessor;
-import crawler.Task;
+import crawler.spider.scheduler.CountableThreadPool;
 import crawler.output.ConsoleOutput;
 import crawler.output.ICollectOutput;
 import crawler.output.IOutput;

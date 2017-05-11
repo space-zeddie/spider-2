@@ -2,7 +2,7 @@ package crawler.web;
 /**
  * Created by matvii on 08.04.17.
  */
-import crawler.ResultItems;
+import crawler.spider.ResultItems;
 import crawler.utils.UrlUtils;
 import crawler.web.extractors.IExtractable;
 import org.apache.commons.lang3.StringUtils;

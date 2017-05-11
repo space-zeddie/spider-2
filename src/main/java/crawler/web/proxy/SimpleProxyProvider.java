@@ -4,7 +4,7 @@ package crawler.web.proxy;
  * Created by matvii on 07.05.17.
  */
 
-import crawler.Task;
+import crawler.spider.Task;
 import crawler.web.Page;
 
 import java.util.ArrayList;
