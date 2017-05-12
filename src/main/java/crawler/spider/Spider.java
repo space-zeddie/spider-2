@@ -4,6 +4,8 @@ package crawler.spider;
  * Created by matvii on 13.04.17.
  */
 
+import crawler.reader.IDbLoader;
+import crawler.reader.JsonDbLoader;
 import crawler.spider.scheduler.CountableThreadPool;
 import crawler.output.ConsoleOutput;
 import crawler.output.ICollectOutput;
@@ -38,7 +40,7 @@ public class Spider implements Runnable, Task {
 
     protected IDownloader downloader;
     protected List<IOutput> pipelines = new ArrayList<IOutput>();
-    protected IReader reader = new JsonFileReader();
+    protected IDbLoader dbLoader = null;
     protected IPageProcessor pageProcessor;
     protected List<Request> startRequests;
     protected Site site;
@@ -143,9 +145,6 @@ public class Spider implements Runnable, Task {
         }
         if (pipelines.isEmpty()) {
             pipelines.add(new ConsoleOutput());
-        }
-        if (reader == null) {
-            this.reader = new JsonFileReader();
         }
         downloader.setThread(threadNum);
         if (threadPool == null || threadPool.isShutdown()) {
@@ -352,10 +351,10 @@ public class Spider implements Runnable, Task {
         return this;
     }
 
-    public Spider addUrlSources(String... paths) {
-        for (String path : paths) {
-
-        }
+    public Spider setDbLoader(IDbLoader dbLoader) {
+        this.dbLoader = dbLoader;
+        for (String url : this.dbLoader.getSourceUrls())
+            this.addUrl(url);
         return this;
     }
 

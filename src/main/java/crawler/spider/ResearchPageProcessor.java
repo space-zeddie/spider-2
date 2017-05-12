@@ -37,7 +37,7 @@ public class ResearchPageProcessor implements IPageProcessor {
         if (regex_url.toString() != null) {
             String[] parts = (regex_url.toString().split("/"));
             page.putField("file_name", parts[parts.length - 1]);
-            try {
+            /*try {
                 if (charset!=null) {
                     File f = new File("/home/matvii/Jun-KMA/1/", "raw_" + parts[parts.length - 1] + ".txt");
                     File f1 = new File("/home/matvii/Jun-KMA/1/", "html_" + parts[parts.length - 1] + ".txt");
@@ -56,7 +56,7 @@ public class ResearchPageProcessor implements IPageProcessor {
                 e.printStackTrace();
             }
         } else {
-            page.putField("file_name", null);
+            page.putField("file_name", null);*/
         }
         Date date = new Date();
         page.putField("retrieval_date", date.toString());
