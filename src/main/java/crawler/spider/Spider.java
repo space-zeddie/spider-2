@@ -3,7 +3,6 @@ package crawler.spider;
 /**
  * Created by matvii on 13.04.17.
  */
-
 import crawler.reader.IDbLoader;
 import crawler.reader.JsonDbLoader;
 import crawler.spider.scheduler.CountableThreadPool;
