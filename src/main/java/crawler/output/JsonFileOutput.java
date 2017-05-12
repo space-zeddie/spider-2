@@ -30,7 +30,11 @@ public class JsonFileOutput extends FileUtils implements IOutput {
     public void process(ResultItems resultItems, Task task) {
         String path = this.path + PATH_SEPERATOR + task.getId() + PATH_SEPERATOR;
         try {
-            PrintWriter printWriter = new PrintWriter(new FileWriter(getFile(path + DigestUtils.md5Hex(resultItems.getRequest().getUrl()) + ".json")));
+            PrintWriter printWriter = null;
+            if (resultItems.getRequest() != null)
+                printWriter = new PrintWriter(new FileWriter(getFile(path + DigestUtils.md5Hex(resultItems.getRequest().getUrl()) + ".json")));
+            else
+                printWriter = new PrintWriter(new FileWriter(getFile(path + task.getId() + ".json")));
             printWriter.write(JSON.toJSONString(resultItems.getAll()));
             printWriter.close();
         } catch (IOException e) {
