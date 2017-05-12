@@ -352,8 +352,11 @@ public class Spider implements Runnable, Task {
         return this;
     }
 
-    public Spider addUrlSources(String urls) {
-        return null;
+    public Spider addUrlSources(String... paths) {
+        for (String path : paths) {
+
+        }
+        return this;
     }
 
     public <T> List<T> getAll(Collection<String> urls) {
