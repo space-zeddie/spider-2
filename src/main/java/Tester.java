@@ -12,11 +12,12 @@ public class Tester {
     public static void main(String[] args) {
 
         IDbLoader dbLoader = new JsonDbLoader();
-        dbLoader.addSourceURLs("http://nz.ukma.edu.ua/index.php?option=com_content&task=view&id=560&Itemid=47");
+        dbLoader.addSourceURLs("http://nz.ukma.edu.ua/index.php?option=com_content&task=view&id=560&Itemid=47",
+                "http://nz.ukma.edu.ua/index.php?option=com_content&task=view&id=197&Itemid=31");
 
         Spider.create(new ResearchPageProcessor())
                 .setDbLoader(dbLoader)
-                //.addPipeline(new JsonFileOutput())
+                .addPipeline(new JsonFileOutput())
                 .thread(5)
                 .run();
 
