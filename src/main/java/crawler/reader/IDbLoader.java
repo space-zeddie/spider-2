@@ -7,8 +7,8 @@ import java.util.List;
  */
 public interface IDbLoader {
 
-    void addSourceFilePaths(String... paths);
+    void addSourceURLs(String... urls);
 
-    List<String> getSourcePaths();
+    List<String> getSourceUrls();
 
 }
