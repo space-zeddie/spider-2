@@ -7,7 +7,7 @@ import java.util.List;
  */
 public interface IDbLoader {
 
-    void addSourceFile(String path);
+    void addSourceFilePaths(String... paths);
 
     List<String> getSourcePaths();
 
